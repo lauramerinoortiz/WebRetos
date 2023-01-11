@@ -1,0 +1,101 @@
+@charset "UTF-8";
+/* CSS Document LAURA MERINO ORTIZ*/
+
+body{
+    width: 1280px;
+	background-color: #e5e0ff;
+	text-align: center;
+	font-family: sans-serif;
+	margin:0px;
+	color: #280061;
+} 
+
+h1{
+	margin-top:50px;
+}
+div#form{
+	margin-top:40px;
+}
+
+div#form >form> label{
+	font-size:2.5em;
+	font-style: bold;
+	color: #280061;
+}
+
+div#form >form> input{
+	margin-top:40px;
+	margin-bottom:20px;
+	color: white;
+    background-color: #280061;
+	font-size:1.3em;
+}
+
+div#form >form> input:hover{
+	background-color: #BEB5E8;
+	color: #280061;
+	transition: all .5s;
+}
+
+div#form >form> input#nombre{
+	margin-top:40px;
+	background-color: #dbd5ff;
+    color: #280061;
+}
+
+table{
+	width:400px;
+	margin:auto;
+	margin-top: 50px;
+	border-collapse: collapse;
+	border-color: #280061;
+	color: #280061;
+	font-size:1.5em;
+}
+
+th{
+	background-color: #280061;
+	color: #e5e0ff;
+}
+
+tr{
+	border: 1px solid #280061;
+}
+
+tr a{
+	margin-left:10px;
+}
+
+
+a{
+	text-decoration:none;
+	color:#280061;
+	font-size:1.5em;
+}
+
+button{
+	margin-top:30px;
+    background-color: transparent;
+}
+
+button:hover{
+    background-color: #280061;
+	transition: all .5s;
+}
+
+button>a:hover{
+	color: white;
+	transition: all .5s;
+}
+
+.modificar{
+	background-color:#B0F0D1;
+}
+
+.eliminar{
+	background-color:#FA9691;
+}
+
+.modificar:hover, .eliminar:hover{
+	filter: brightness(0.7);
+}
