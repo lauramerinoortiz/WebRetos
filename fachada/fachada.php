@@ -20,6 +20,14 @@
             require_once($config['path_controladores'].'controladorcategorias.php');
             $controlador=new ControladorCategorias();
             break;
+        case 'controladormodificar':
+            require_once($config['path_controladores'].'controladormodificar.php');
+            $controlador=new ControladorModificar();
+            break;
+        case 'controladorconsulta':
+            require_once($config['path_controladores'].'controladorconsulta.php');
+            $controlador=new ControladorConsulta();
+            break;
     }
     switch($metodo){
     case 'POST':

@@ -25,7 +25,7 @@
 				while($linea = $datos ->fetch_assoc()){
 						echo '<tr>
 						<td colspan="2">'.$linea['nombre'].'</td>
-						<td><a href="modificar.php?id='.$linea['idcategoria'].'">✎</a>
+						<td><a href="vistas/modificar.php?id='.$linea['idcategoria'].'">✎</a>
 							<a href="consultar_categoria.php?nombre='.$linea['nombre'].'&id='.$linea['idcategoria'].'">🗑</a></td>
 						</tr>';	
 				}

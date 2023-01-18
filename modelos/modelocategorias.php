@@ -54,9 +54,50 @@ class ModeloCategorias{
 			exit;
         }
         else{
-            require_once('../vistas/erroreliminar.html');
+            require_once('../../vistas/erroreliminar.html');
         } 
         $this->conexion->close();
+    }
+
+    public function modificarCategoria($post){
+		$datos =$this->consultarCategorias();
+        if(!empty($post)){
+            $error=false;
+            $formulario = $post;
+            foreach($formulario as $id => $nombre){
+                while($linea = $datos ->fetch_assoc()){
+                    foreach($linea as $ind => $val){
+                        if($val==$nombre){
+                            $error=true;
+                            header('Location: ../../vistas/modificar.php?id='.$id.'');
+                            exit;
+                        }
+                    }
+                }
+                if(!$error){
+                    $this->conectar();
+                    $upd= "UPDATE categorias SET nombre='".$nombre."' WHERE idcategoria=".$id.";";
+                    $resultado = $this->conexion->query($upd);
+                    if($resultado>0){
+                    echo 'header';
+                        header('location: ../../consultar_categoria.php ');
+                        exit;
+                    }
+                    else{
+                        header('location: ../../vistas/erroreliminar.html ');
+                        exit;
+                    }
+                }
+                else{
+                    header('location: ../../vistas/erroreliminar.html ');
+                        exit;
+                }
+            }
+        }
+        else{
+            header('location: ../../vistas/erroreliminar.html ');
+                exit;
+        }
     }
 }
 ?>
