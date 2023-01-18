@@ -58,7 +58,9 @@ class ModeloCategorias{
         } 
         $this->conexion->close();
     }
-
+    /**
+     * Método que modifica una categoría data comprobando antes si ya existe un valor igual en la base de datos
+     */
     public function modificarCategoria($post){
 		$datos =$this->consultarCategorias();
         if(!empty($post)){
@@ -89,7 +91,7 @@ class ModeloCategorias{
                 }
                 else{
                     header('location: ../../vistas/erroreliminar.html ');
-                        exit;
+                    exit;
                 }
             }
         }
