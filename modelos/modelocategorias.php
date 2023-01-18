@@ -79,7 +79,6 @@ class ModeloCategorias{
                     $upd= "UPDATE categorias SET nombre='".$nombre."' WHERE idcategoria=".$id.";";
                     $resultado = $this->conexion->query($upd);
                     if($resultado>0){
-                    echo 'header';
                         header('location: ../../consultar_categoria.php ');
                         exit;
                     }
