@@ -12,7 +12,7 @@
 		<?php
 		if(isset($_GET['nombre'])){
 			echo '<h1>¿Seguro que quiere eliminar '.$_GET['nombre'].' ?</h1>
-				<button class="modificar"><a href="fachada/fachada.php/controladorcategorias?nombre='.$_GET['nombre'].'">Sí</button>
+				<button class="modificar"><a href="eliminar.php?nombre='.$_GET['nombre'].'">Sí</button>
 				<button class="eliminar"><a href="consultar_categoria.php">No</button>
 			';
 		}
@@ -25,7 +25,7 @@
 				while($linea = $datos ->fetch_assoc()){
 						echo '<tr>
 						<td colspan="2">'.$linea['nombre'].'</td>
-						<td><a href="vistas/modificar.php?id='.$linea['idcategoria'].'">✎</a>
+						<td><a href="modificar.php?id='.$linea['idcategoria'].'">✎</a>
 							<a href="consultar_categoria.php?nombre='.$linea['nombre'].'&id='.$linea['idcategoria'].'">🗑</a></td>
 						</tr>';	
 				}

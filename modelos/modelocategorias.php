@@ -1,9 +1,5 @@
 <?php
-// require_once('config/conexion.php');
-define('SERVIDOR', '2daw.esvirgua.com');
-define('USUARIO', 'user2daw_07');
-define('CONTRASENIA', 'TUL9APOhnFN8');
-define('BD', 'user2daw_BD1-07');
+require_once('config/conexion.php');
 
 class ModeloCategorias{
     function __construct(){
@@ -34,11 +30,22 @@ class ModeloCategorias{
     /**
      * Insertar categoria
      */
-    public function insertarCategoria($datos){
+    public function insertarCategoria($nombre){
         $this->conectar();
         $consulta="INSERT INTO categorias (nombre) VALUES ('".$nombre."')";
-		$datos = $this->conexion->query($consulta);
-        return $this->conexion->affected_rows;
+		try{
+            $datos = $this->conexion->query($consulta);
+            return $this->conexion->affected_rows;
+        }
+        catch(Exception $e){
+            $error=$this->conexion->errno;
+            if($error==1062){
+                return 'duplicado';
+            }
+            else{
+                return 'errordesconocido';
+            }
+        }
         $this->conexion->close();
     }
 
@@ -49,55 +56,42 @@ class ModeloCategorias{
         $this->conectar();
         $borrar= "DELETE FROM categorias WHERE nombre='".$datos['nombre']."';";
 		$resultado = $this->conexion->query($borrar);
-        if($this->conexion->affected_rows>0){
-            header('location: ../../consultar_categoria.php ');
-			exit;
-        }
-        else{
-            require_once('../../vistas/erroreliminar.html');
-        } 
+        $resultado=$this->conexion->affected_rows;
+        return $resultado;
         $this->conexion->close();
     }
     /**
      * Método que modifica una categoría data comprobando antes si ya existe un valor igual en la base de datos
      */
     public function modificarCategoria($post){
-		$datos =$this->consultarCategorias();
         if(!empty($post)){
-            $error=false;
             $formulario = $post;
             foreach($formulario as $id => $nombre){
-                while($linea = $datos ->fetch_assoc()){
-                    foreach($linea as $ind => $val){
-                        if($val==$nombre){
-                            $error=true;
-                            header('Location: ../../vistas/modificar.php?id='.$id.'');
-                            exit;
-                        }
-                    }
-                }
-                if(!$error){
                     $this->conectar();
                     $upd= "UPDATE categorias SET nombre='".$nombre."' WHERE idcategoria=".$id.";";
-                    $resultado = $this->conexion->query($upd);
-                    if($resultado>0){
-                        header('location: ../../consultar_categoria.php ');
-                        exit;
+                    try{
+                        $resultado = $this->conexion->query($upd);
+                        if($resultado>0){
+                            return 'ok';
+                        }
+                        else{
+                            return 'errormodificar';
+                            
+                        }
                     }
-                    else{
-                        header('location: ../../vistas/erroreliminar.html ');
-                        exit;
+                    catch(Exception $e){
+                        $error=$this->conexion->errno;
+                        if($error==1062){
+                            return 'duplicado';
+                        }
+                        else{
+                            return 'errordesconocido';
+                        }
                     }
-                }
-                else{
-                    header('location: ../../vistas/erroreliminar.html ');
-                    exit;
-                }
             }
         }
         else{
-            header('location: ../../vistas/erroreliminar.html ');
-                exit;
+            return 'errormodificar';
         }
     }
 }

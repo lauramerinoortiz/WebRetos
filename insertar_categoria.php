@@ -17,39 +17,18 @@
 			</form>
 		</div>
 		<?php
-			$usuario='user2daw_07';
-			$contraseña='TUL9APOhnFN8';
-			$basedatos='user2daw_BD1-07';
-			$servidorbd='2daw.esvirgua.com';
-
-			$conex =  new mysqli($servidorbd, $usuario, $contraseña, $basedatos);
-			$select= "SELECT nombre FROM categorias;";
-			$datos = $conex->query($select);
-
 			if(empty($_POST['nombre'])){
 					echo '<br>Añadir un nombre.';
 			}
 			
 			else{
+				require_once('controladores/controladorcategorias.php');
+				$controladorCategorias=new ControladorCategorias();
 				$nombre=$_POST['nombre'];
-				$existe=false;
-				while($linea = $datos ->fetch_assoc()){
-					foreach($linea as $ind => $val){
-						if($val==$nombre){
-							echo 'Valor existente.';
-							$existe=true;
-						}
-					}	
-				}
-				if($existe==false){
-					$conexion =  new mysqli($servidorbd, $usuario, $contraseña, $basedatos);
-					$consulta="INSERT INTO categorias (nombre) VALUES ('".$nombre."')";
-					$resultado = $conexion->query($consulta);
-					echo'<br>Se han registrado '.$conexion->affected_rows.' fila/s.';
-				}
-				else{
-					echo '<br>Volver a intentar.';
-				}
+				$filas= $controladorCategorias->insertar($nombre);
+				if($filas>0){
+					echo'<br>Se han registrado '.$filas.' fila/s.';
+				}				
 			}
 		?>
 		
