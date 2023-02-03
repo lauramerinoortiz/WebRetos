@@ -52,19 +52,23 @@
          *Método para el envío de categorias recibidas al modelo para su posterior insercción
          */
         public function modificar($datos){
-            $resultado=$this->modelo->modificarCategoria($datos);
-            if($resultado=='ok'){
-                header('location: consultar_categoria.php ');
-                exit;
-            }
-            else if($resultado=='duplicado'){
+            if(reset($datos)==''){
                 header('Location:' . getenv('HTTP_REFERER'));
-            }
-            else{
-                header('location: ../vistas/erroreliminar.html ');
-                exit;
-            }
+            }else{
+                $resultado=$this->modelo->modificarCategoria($datos);
             
+                if($resultado=='ok'){
+                    header('location: consultar_categoria.php ');
+                    exit;
+                }
+                else if($resultado=='duplicado'){
+                    header('Location:' . getenv('HTTP_REFERER'));
+                }
+                else{
+                     header('location: ../vistas/erroreliminar.html ');
+                     exit;
+                }
+            }          
         }
     }
 ?>

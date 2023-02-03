@@ -24,7 +24,7 @@
 			
 			echo '<form method="POST" action="modificar.php">
 			<label>Categoría <label>
-			<input type="text" required="required" name="'.$_GET['id'].'" value="'.$categoria.'"/>
+			<input type="text" name="'.$_GET['id'].'" value="'.$categoria.'"/>
 			<input type="submit" value="Guardar"/><br>
 			</form>
 			<p>Si el valor ya existe, se le volverá a pedir el dato.</p>';
