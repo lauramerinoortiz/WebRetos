@@ -20,8 +20,9 @@ class ModeloRetos{
      */
     public function consultarRetos(){
         $this->conectar();
-        
-        
+        $select= "SELECT * FROM retos;";
+		$datos = $this->conexion->query($select);
+        return $datos;
         $this->conexion->close();
     }
 

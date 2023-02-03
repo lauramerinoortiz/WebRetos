@@ -32,6 +32,6 @@
 			}
 		?>
 		
-		<br/><button><a href="consultar_categoria.php">CONSULTAR RETOS</a></button>
+		<br/><button><a href="consultar_retos.php">CONSULTAR RETOS</a></button>
 	</body>
 </html>
