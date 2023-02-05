@@ -99,3 +99,7 @@ button>a:hover{
 .modificar:hover, .eliminar:hover{
 	filter: brightness(0.7);
 }
+
+#retos{
+	min-width: 1200px;
+}

@@ -33,7 +33,8 @@
 			else{
 				echo '<tr><td>No hay valores.</td></tr>';
 			}
-			echo '<br/><button><a href="insertar_categoria.php">INSERTAR CATEGORÍAS</a></button>';
+			echo '<button><a href="index.html">Home</a></button>
+			<br/><button><a href="insertar_categoria.php">INSERTAR CATEGORÍAS</a></button><br>';
 		}
 		?>
 	</table>
