@@ -29,9 +29,12 @@ class ModeloRetos{
     /**
      * Insertar reto comprobando que no haya un reto con el mismo nombre
      */
-    public function insertarRetos($reto){
+    public function insertarReto($reto){
         $this->conectar();
-        
+        $select= "INSERT INTO `retos` (`nombre`, `descripcion`, `publicada`,`fecha_inicio_reto`, `fecha_fin_reto`, `fecha_inicio_inscripcion`, `fecha_fin_inscripcion`, `idprofesor`, `idcategoria` ) 
+        VALUES ('".$reto['nombre']."', '".$reto['descripcion']."', ".$reto['opciones'].", '".$reto['inicio']."', '".$reto['fin']."','".$reto['inicioIns']."', '".$reto['finIns']."', 1, ".$reto['cat'].");";
+        $datos = $this->conexion->query($select);
+        return $datos;
         $this->conexion->close();
     }
 

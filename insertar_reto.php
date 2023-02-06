@@ -8,29 +8,76 @@
 		<link rel="stylesheet" href="styles.css" type="text/css">
 	</head>
 	<body>
+	<?php
+		if(empty($_POST['nombre'])){
+				echo '<br>Añadir un nombre.';
+		}
+		else{
+			require_once('controladores/controladorretos.php');
+			$controladorRetos=new ControladorRetos();
+			$filas= $controladorRetos->insertar($_POST);
+			if($filas>0){
+				echo'<br>Se han registrado '.$filas.' fila/s.';
+			}				
+		}
+		?>
 		<div id="form">
 			<form action="insertar_reto.php" method="post">
-				<label for="nombre">Nuevo Reto</label><br>
-				<input type="text" id="nombre" name="nombre">
+				
+			<h1>Nuevo reto</h1>
+			<label for="nombre" id="labelNombre">Nombre del reto:</label><input type="text" id="nombre" name="nombre"><br>
+			<label for="descripcion" id="labelDesc">Descripción del reto:</label><textarea id="descripcion" name="descripcion"></textarea><br>
+			<label for="publiopciones" id="labelOpciones">¿Publicar ya?</label>
+			<div id="publiopciones">
+				<label for="publicadaSi"><input type="radio" name="opciones" value="1"  id="publicadaSi">Si</label>
+				<label for="publicadaNo" id="labelPublicadaNo"><input type="radio" value="0" name="opciones" id="publicadaNo" checked>No</label>
+			</div>
+
+			<label for="dirigido" id="labelDirigido">Dirigido a:</label>
+			<select id="dirigido" name="dirigido">
+				<option >-Elegir una opción-</option>
+				<option value="infantil">INFANTIL</option>
+				<option value="eso">ESO</option>
+				<option value="bachillerato">BACHILLERATO</option>
+				<option value="gm">GM</option>
+				<option value="gs">GS</option>
+			</select>
+
+			<label for="categoria" id="labelCategoria">Categoría:</label>
+			<select id="categoria" name="cat">
+				<?php 
+					require_once('controladores/controladorcategorias.php');
+					$controlador=new ControladorCategorias();
+					$datos=$controlador-> consultar();
+					if($datos->num_rows>0){
+						while($linea = $datos ->fetch_assoc()){
+							echo '<option value="'.$linea['idcategoria'].'">'.$linea['nombre'].'</option>';
+						}
+					}
+					else{
+						echo '<option>No hay categorias</option>';
+					}
+				?>
+
+			</select>
+
+			<div id="inscripcion">
+				<h3>Fecha inscripción</h3>
+				<label>Fecha inicio:</label><input type="date" name="inicioIns">
+				<label>Fecha fin:</label><input type="date" name="finIns">
+			</div>
+
+			<div id="realizacion">
+				<h3>Fecha realización</h3>
+				<label>Fecha inicio:</label><input type="date" name="inicio">
+				<label>Fecha fin:</label><input type="date" name="fin">
+			</div>
+
 				<input type="submit" >
 				<input type="reset" name="restablecer" value="Restablecer">
 			</form>
 		</div>
-		<?php
-			if(empty($_POST['nombre'])){
-					echo '<br>Añadir un nombre.';
-			}
-			
-			else{
-				require_once('controladores/controladorretos.php');
-				$controladorRetos=new ControladorRetos();
-				$nombre=$_POST['nombre'];
-				$filas= $controladorRetos->insertar($nombre);
-				if($filas>0){
-					echo'<br>Se han registrado '.$filas.' fila/s.';
-				}				
-			}
-		?>
+		
 		
 		<br/><button><a href="consultar_retos.php">CONSULTAR RETOS</a></button>
 	</body>

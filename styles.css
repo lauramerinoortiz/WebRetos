@@ -103,3 +103,7 @@ button>a:hover{
 #retos{
 	min-width: 1200px;
 }
+
+#retos td{
+	padding: 15px 0px;
+}
