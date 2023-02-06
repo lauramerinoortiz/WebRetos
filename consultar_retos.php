@@ -13,10 +13,6 @@
 			require_once('controladores/controladorretos.php');
             $controladorRetos=new ControladorRetos();
             $datos=$controladorRetos->consultar();
-
-			require_once('controladores/controladorcategorias.php');
-            $controladorCat=new ControladorCategorias();
-            $cat=$controladorCat->consultar();
 			?>
 			<table id="retos">
 				<tr>
@@ -30,8 +26,11 @@
 				</tr>
 			
 			<?php
+			require_once('controladores/controladorcategorias.php');
+            $controladorCat=new ControladorCategorias();
 			if($datos->num_rows>0){
 				while($linea = $datos ->fetch_assoc()){
+					$cat=$controladorCat->consultar();
 					echo '<tr>
 					<td colspan="1">'.$linea['nombre'].'</td>
 					<td colspan="1">'.$linea['descripcion'].'</td>
