@@ -107,3 +107,24 @@ button>a:hover{
 #retos td{
 	padding: 15px 0px;
 }
+
+#formReto{
+	font-size: 1em;
+}
+
+#formReto input, 
+#formReto textarea,
+#formReto select{
+	margin: 20px 0px;
+}
+
+#publiopciones{
+	display: inline-block;
+}
+
+#inscripcion, #realizacion{
+	padding: 10px;
+	border: 2px black solid;
+	display: inline-block;
+	margin-top: 20px;
+}

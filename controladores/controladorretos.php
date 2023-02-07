@@ -22,10 +22,12 @@
          *Método para el envío de retos recibidas al modelo para su posterior insercción
          */
         public function insertar($reto){
-            //print_r($reto);
             $filas=$this->modelo->insertarReto($reto);
-            if($filas=='duplicado'){
-                echo 'Valor existente';
+            if($filas>0){
+                return $filas;
+            }
+            else if($filas=='duplicado'){
+                echo 'Valor existente';  //objetivo quitarlo
             }
             else if($filas=='errordesconocido'){
                 header('../vistas/erroreliminar.html');

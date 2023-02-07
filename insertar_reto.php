@@ -8,20 +8,7 @@
 		<link rel="stylesheet" href="styles.css" type="text/css">
 	</head>
 	<body>
-	<?php
-		if(empty($_POST['nombre'])){
-				echo '<br>Añadir un nombre.';
-		}
-		else{
-			require_once('controladores/controladorretos.php');
-			$controladorRetos=new ControladorRetos();
-			$filas= $controladorRetos->insertar($_POST);
-			if($filas>0){
-				echo'<br>Se han registrado '.$filas.' fila/s.';
-			}				
-		}
-		?>
-		<div id="form">
+		<div id="formReto">
 			<form action="insertar_reto.php" method="post">
 				
 			<h1>Nuevo reto</h1>
@@ -31,7 +18,7 @@
 			<div id="publiopciones">
 				<label for="publicadaSi"><input type="radio" name="opciones" value="1"  id="publicadaSi">Si</label>
 				<label for="publicadaNo" id="labelPublicadaNo"><input type="radio" value="0" name="opciones" id="publicadaNo" checked>No</label>
-			</div>
+			</div><br>
 
 			<label for="dirigido" id="labelDirigido">Dirigido a:</label>
 			<select id="dirigido" name="dirigido">
@@ -59,25 +46,37 @@
 					}
 				?>
 
-			</select>
+			</select><br>
 
 			<div id="inscripcion">
 				<h3>Fecha inscripción</h3>
 				<label>Fecha inicio:</label><input type="date" name="inicioIns">
 				<label>Fecha fin:</label><input type="date" name="finIns">
-			</div>
+			</div><br>
 
 			<div id="realizacion">
 				<h3>Fecha realización</h3>
-				<label>Fecha inicio:</label><input type="date" name="inicio">
+				<label>Fecha inicio:</label><input type="datetime-local" name="inicio">
 				<label>Fecha fin:</label><input type="date" name="fin">
-			</div>
+			</div><br>
 
 				<input type="submit" >
 				<input type="reset" name="restablecer" value="Restablecer">
 			</form>
 		</div>
-		
+		<?php
+		if(empty($_POST['nombre'])){
+				echo '<br>Añadir un nombre.';
+		}
+		else{
+			require_once('controladores/controladorretos.php');
+			$controladorRetos=new ControladorRetos();
+			$filas= $controladorRetos->insertar($_POST);
+			if($filas>0){
+				echo'<br>Se han registrado '.$filas.' fila/s.';
+			}				
+		}
+		?>
 		
 		<br/><button><a href="consultar_retos.php">CONSULTAR RETOS</a></button>
 	</body>

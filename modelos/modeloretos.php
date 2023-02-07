@@ -33,8 +33,19 @@ class ModeloRetos{
         $this->conectar();
         $select= "INSERT INTO `retos` (`nombre`, `descripcion`, `publicada`,`fecha_inicio_reto`, `fecha_fin_reto`, `fecha_inicio_inscripcion`, `fecha_fin_inscripcion`, `idprofesor`, `idcategoria` ) 
         VALUES ('".$reto['nombre']."', '".$reto['descripcion']."', ".$reto['opciones'].", '".$reto['inicio']."', '".$reto['fin']."','".$reto['inicioIns']."', '".$reto['finIns']."', 1, ".$reto['cat'].");";
-        $datos = $this->conexion->query($select);
-        return $datos;
+        try{
+            $datos = $this->conexion->query($select);
+            return $datos;
+        }
+        catch(Exception $e){
+            $error=$this->conexion->errno;
+            if($error==1062){
+                return 'duplicado';
+            }
+            else{
+                return 'errordesconocido';
+            }
+        }
         $this->conexion->close();
     }
 
