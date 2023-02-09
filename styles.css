@@ -2,7 +2,6 @@
 /* CSS Document LAURA MERINO ORTIZ*/
 
 body{
-    width: 1280px;
 	background-color: #e5e0ff;
 	text-align: center;
 	font-family: sans-serif;
@@ -56,6 +55,7 @@ table{
 th{
 	background-color: #280061;
 	color: #e5e0ff;
+	padding:15px;
 }
 
 tr{

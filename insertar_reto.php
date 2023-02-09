@@ -12,15 +12,15 @@
 			<form action="insertar_reto.php" method="post">
 				
 			<h1>Nuevo reto</h1>
-			<label for="nombre" id="labelNombre">Nombre del reto:</label><input type="text" id="nombre" name="nombre"><br>
+			<label for="nombre" id="labelNombre">*Nombre del reto:</label><input type="text" id="nombre" name="nombre"><br>
 			<label for="descripcion" id="labelDesc">Descripción del reto:</label><textarea id="descripcion" name="descripcion"></textarea><br>
-			<label for="publiopciones" id="labelOpciones">¿Publicar ya?</label>
+			<label for="publiopciones" id="labelOpciones">*¿Publicar ya?</label>
 			<div id="publiopciones">
-				<label for="publicadaSi"><input type="radio" name="opciones" value="1"  id="publicadaSi">Si</label>
-				<label for="publicadaNo" id="labelPublicadaNo"><input type="radio" value="0" name="opciones" id="publicadaNo" checked>No</label>
+				<label for="publicadaSi"><input type="radio" name="opciones" value=1  id="publicadaSi">Si</label>
+				<label for="publicadaNo" id="labelPublicadaNo"><input type="radio" value=0 name="opciones" id="publicadaNo" checked>No</label>
 			</div><br>
 
-			<label for="dirigido" id="labelDirigido">Dirigido a:</label>
+			<label for="dirigido" id="labelDirigido">*Dirigido a:</label>
 			<select id="dirigido" name="dirigido">
 				<option >-Elegir una opción-</option>
 				<option value="infantil">INFANTIL</option>
@@ -30,7 +30,7 @@
 				<option value="gs">GS</option>
 			</select>
 
-			<label for="categoria" id="labelCategoria">Categoría:</label>
+			<label for="categoria" id="labelCategoria">*Categoría:</label>
 			<select id="categoria" name="cat">
 				<?php 
 					require_once('controladores/controladorcategorias.php');
@@ -50,14 +50,14 @@
 
 			<div id="inscripcion">
 				<h3>Fecha inscripción</h3>
-				<label>Fecha inicio:</label><input type="date" name="inicioIns">
-				<label>Fecha fin:</label><input type="date" name="finIns">
+				<label>*Fecha inicio:</label><input type="date" name="inicioIns">
+				<label>*Fecha fin:</label><input type="date" name="finIns">
 			</div><br>
 
 			<div id="realizacion">
 				<h3>Fecha realización</h3>
-				<label>Fecha inicio:</label><input type="datetime-local" name="inicio">
-				<label>Fecha fin:</label><input type="date" name="fin">
+				<label>*Fecha inicio:</label><input type="datetime-local" name="inicio">
+				<label>*Fecha fin:</label><input type="date" name="fin">
 			</div><br>
 
 				<input type="submit" >
@@ -65,8 +65,8 @@
 			</form>
 		</div>
 		<?php
-		if(empty($_POST['nombre'])){
-				echo '<br>Añadir un nombre.';
+		if(empty($_POST['nombre'])|| empty($_POST['inicio']) || empty($_POST['fin']) || empty($_POST['inicioIns']) || empty($_POST['finIns']) ){
+				echo '<br>Añadir los datos con asterisco.';
 		}
 		else{
 			require_once('controladores/controladorretos.php');
