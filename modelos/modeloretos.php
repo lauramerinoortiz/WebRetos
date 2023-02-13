@@ -55,7 +55,15 @@ class ModeloRetos{
      */
     public function eliminarReto($reto){
         $this->conectar();
-        
+        $select= "DELETE FROM retos WHERE idreto=".$reto."; ";
+        try{
+            $datos = $this->conexion->query($select);
+            return $datos;
+        }
+        catch(Exception $e){
+            $error=$this->conexion->errno;
+            return 'errordesconocido';
+        }
         $this->conexion->close();
     }
     /**

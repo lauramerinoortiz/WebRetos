@@ -10,6 +10,20 @@
   <body>
 	<h1>Retos</h1>
 		<?php
+		if(isset($_GET['idReto'])){
+			$id=$_GET['idReto'];
+			require_once('controladores/controladorretos.php');
+            $controladorRetos=new ControladorRetos();
+            $datos=$controladorRetos->consultar();
+			while($linea = $datos ->fetch_assoc()){
+				if($linea['idreto']==$id){
+					$nombre=$linea['nombre'];
+				}
+			}
+
+			require_once('eliminarReto.php');
+		}
+		else{
 			require_once('controladores/controladorretos.php');
             $controladorRetos=new ControladorRetos();
             $datos=$controladorRetos->consultar();
@@ -22,8 +36,9 @@
 					<th colspan="1">Fin</th>
 					<th colspan="1">Inicio Inscripción</th>
 					<th colspan="1">Fin inscripción</th>
-					<th colspan="1">Publicado</th>
+					<th colspan="1">Up</th>
 					<th colspan="1">Categoría</th>
+					<th colspan="1">Opciones</th>
 				</tr>
 			
 			<?php
@@ -51,6 +66,8 @@
 							echo '<td colspan="1">'.$cate['nombre'].'</td>';
 						}					
 					}
+					echo '<td><a href="modificarReto.php?idReto='.$linea['idreto'].'">✎</a>
+					<a href="consultar_retos.php?idReto='.$linea['idreto'].'">🗑</a></td>';
 				}
 			}
 			else{
@@ -58,6 +75,7 @@
 			}
 			echo '<button><a href="index.html">Home</a></button>
 			<br/><button><a href="insertar_reto.php">INSERTAR NUEVO RETO</a></button>';
+		}
 		?>
 	</table>
   </body>
