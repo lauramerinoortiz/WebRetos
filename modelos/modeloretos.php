@@ -26,26 +26,42 @@ class ModeloRetos{
         $this->conexion->close();
     }
 
+    public function consultarId($id){
+        $this->conectar();
+        $select= "SELECT * FROM retos WHERE idreto=".$id.";";
+		$datos = $this->conexion->query($select);
+        return $datos;
+        $this->conexion->close();
+    }
+
     /**
      * Insertar reto comprobando que no haya un reto con el mismo nombre
      */
     public function insertarReto($reto){
+        $desc=$reto['descripcion'];
+        if(empty($desc)){
+            $desc='NULL';
+        }
+        else{
+            $desc="'$desc'";
+        }
         $this->conectar();
-        $select= "INSERT INTO `retos` (`nombre`, `descripcion`, `fecha_inicio_reto`, `fecha_fin_reto`, `fecha_inicio_inscripcion`, `fecha_fin_inscripcion`,`publicada`, `idprofesor`, `idcategoria` ) 
-        VALUES ('".$reto['nombre']."', '".$reto['descripcion']."', '".$reto['inicio']."', '".$reto['fin']."','".$reto['inicioIns']."','".$reto['finIns']."',".$reto['opciones'].", 1, ".$reto['cat'].");";
+        $select= "INSERT INTO `retos` (`nombre`, `descripcion`, `fecha_inicio_reto`, `fecha_fin_reto`, `fecha_inicio_inscripcion`, `fecha_fin_inscripcion`,`publicada`, `idprofesor`, `idcategoria` ,`dirigido`) 
+        VALUES ('".$reto['nombre']."', ".$desc.", '".$reto['inicio']."', '".$reto['fin']."','".$reto['inicioIns']."','".$reto['finIns']."',".$reto['opciones'].", 1, ".$reto['cat'].", '".$reto['dirigido']."');";
         try{
             $datos = $this->conexion->query($select);
             return $datos;
         }
         catch(Exception $e){
             $error=$this->conexion->errno;
-            if($error==1062){
-                return 'duplicado';
-            }
-            else{
-                //echo $error;
-                return 'errordesconocido';
-            }
+            echo $e;
+            // if($error==1062){
+            //     return 'duplicado';
+            // }
+            // else{
+            //     //echo $error;
+            //     return 'errordesconocido';
+            // }
         }
         $this->conexion->close();
     }

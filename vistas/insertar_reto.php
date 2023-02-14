@@ -22,7 +22,6 @@
 
 			<label for="dirigido" id="labelDirigido">*Dirigido a:</label>
 			<select id="dirigido" name="dirigido">
-				<option >-Elegir una opción-</option>
 				<option value="infantil">INFANTIL</option>
 				<option value="eso">ESO</option>
 				<option value="bachillerato">BACHILLERATO</option>

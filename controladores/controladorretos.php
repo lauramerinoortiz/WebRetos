@@ -18,6 +18,11 @@
             $datos=$this->modelo->consultarRetos();
             return $datos;
         }
+
+        public function consultarId($id){
+            $datos=$this->modelo->consultarId($id);
+            return $datos;
+        }
         /**
          *Método para el envío de retos recibidas al modelo para su posterior insercción
          */

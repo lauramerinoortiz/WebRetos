@@ -9,20 +9,47 @@
 	</head>
 	<body>
 		<div id="formReto">
-			<form action="insertar_reto.php" method="post">
-				
+			<form action="modificarReto.php" method="post">
+			<?php 
+				$id=$_GET['idReto'];
+				require_once('../controladores/controladorretos.php');
+				$controlador=new ControladorRetos();
+				$datos=$controlador-> consultarId($id);
+				while($linea = $datos ->fetch_assoc()){
+					print_r($linea);
+					$nombre=$linea['nombre'];
+					$desc=$linea['descripcion'];
+					$inicio=$linea['fecha_inicio_reto'];
+					$fin=$linea['fecha_fin_reto'];
+					$inicioIns=$linea['fecha_inicio_inscripcion'];
+					$finIns=$linea['fecha_fin_inscripcion'];
+					$publicada=$linea['publicada'];
+					$categoria=$linea['idcategoria'];
+				}
+			?>
 			<h1>Modificar reto</h1>
-			<label for="nombre" id="labelNombre">*Nombre del reto:</label><input type="text" id="nombre" name="nombre"><br>
-			<label for="descripcion" id="labelDesc">Descripción del reto:</label><textarea id="descripcion" name="descripcion"></textarea><br>
+			<label for="nombre" id="labelNombre">*Nombre del reto:</label><input type="text" id="nombre" name="nombre" value="<?php echo $nombre;?>"><br>
+			<label for="descripcion" id="labelDesc">Descripción del reto:</label><textarea id="descripcion" name="descripcion"><?php echo $desc;?></textarea><br>
 			<label for="publiopciones" id="labelOpciones">*¿Publicar ya?</label>
 			<div id="publiopciones">
-				<label for="publicadaSi"><input type="radio" name="opciones" value=1  id="publicadaSi">Si</label>
-				<label for="publicadaNo" id="labelPublicadaNo"><input type="radio" value=0 name="opciones" id="publicadaNo" checked>No</label>
+				<?php
+					if($publicada==0){
+						echo '<label for="publicadaSi"><input type="radio" name="opciones" value=1  id="publicadaSi">Si</label>
+						<label for="publicadaNo" id="labelPublicadaNo"><input type="radio" value=0 name="opciones" id="publicadaNo" checked>No</label>
+					';
+					}
+					else{
+						echo '<label for="publicadaSi"><input type="radio" name="opciones" value=1  id="publicadaSi" checked>Si</label>
+						<label for="publicadaNo" id="labelPublicadaNo"><input type="radio" value=0 name="opciones" id="publicadaNo">No</label>
+					';
+					}
+				?>
 			</div><br>
-
 			<label for="dirigido" id="labelDirigido">*Dirigido a:</label>
 			<select id="dirigido" name="dirigido">
-				<option >-Elegir una opción-</option>
+				<?php 
+				
+				?>
 				<option value="infantil">INFANTIL</option>
 				<option value="eso">ESO</option>
 				<option value="bachillerato">BACHILLERATO</option>
@@ -50,7 +77,7 @@
 
 			<div id="inscripcion">
 				<h3>Fecha inscripción</h3>
-				<label>*Fecha inicio:</label><input type="date" name="inicioIns">
+				<label>*Fecha inicio:</label><input type="date" name="inicioIns" >
 				<label>*Fecha fin:</label><input type="date" name="finIns">
 			</div><br>
 
@@ -59,14 +86,13 @@
 				<label>*Fecha inicio:</label><input type="datetime-local" name="inicio">
 				<label>*Fecha fin:</label><input type="date" name="fin">
 			</div><br>
-
 				<input type="submit" >
 				<input type="reset" name="restablecer" value="Restablecer">
 			</form>
 		</div>
 		<?php
 		if(empty($_POST['nombre'])|| empty($_POST['inicio']) || empty($_POST['fin']) || empty($_POST['inicioIns']) || empty($_POST['finIns']) ){
-				echo '<br>Añadir los datos con asterisco.';
+			echo '<br>Añadir los datos con asterisco.';
 		}
 		else{
 			require_once('../controladores/controladorretos.php');

@@ -37,6 +37,7 @@
 					<th colspan="1">Inicio Inscripción</th>
 					<th colspan="1">Fin inscripción</th>
 					<th colspan="1">Up</th>
+					<th colspan="1">Dirigido</th>
 					<th colspan="1">Categoría</th>
 					<th colspan="1">Opciones</th>
 				</tr>
@@ -60,7 +61,8 @@
 					<td colspan="1">'.$linea['fecha_fin_reto'].'</td>
 					<td colspan="1">'.$linea['fecha_inicio_inscripcion'].'</td>
 					<td colspan="1">'.$linea['fecha_fin_inscripcion'].'</td>
-					<td colspan="1">'.$publicado.'</td>';
+					<td colspan="1">'.$publicado.'</td>
+					<td colspan="1">'.$linea['dirigido'].'</td>';
 					while($cate = $cat ->fetch_assoc()){
 						if($cate['idcategoria']==$linea['idcategoria']){
 							echo '<td colspan="1">'.$cate['nombre'].'</td>';
