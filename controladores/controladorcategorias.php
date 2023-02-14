@@ -1,5 +1,5 @@
 <?php
-    require_once('modelos/modelocategorias.php');
+    require_once('../modelos/modelocategorias.php');
     /**
      * Clase para la gestión de objetos de tipo ControladorCategorias
      */

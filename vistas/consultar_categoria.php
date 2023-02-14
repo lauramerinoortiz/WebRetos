@@ -5,7 +5,7 @@
     <meta name="author" content="LAURA MERINO ORTIZ">
     <meta name="description" content="Esta es la descripción de mi web.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-	<link rel="stylesheet" href="styles.css" type="text/css">
+	<link rel="stylesheet" href="../styles.css" type="text/css">
   </head>
   <body>
 	<h1>CATEGORÍAS</h1>
@@ -17,9 +17,9 @@
 			';
 		}
 		else{
-			require_once('modelos/modelocategorias.php');
-            $modeloCategorias=new ModeloCategorias();
-            $datos=$modeloCategorias->consultarCategorias();
+			require_once('../controladores/controladorcategorias.php');
+            $controladorCategorias=new ControladorCategorias();
+            $datos=$controladorCategorias->consultar();
 			echo '<table><tr><th colspan="2">Datos introducidos</th><th colspan="1">Opciones</th></tr>';
 			if($datos->num_rows>0){
 				while($linea = $datos ->fetch_assoc()){
@@ -33,7 +33,7 @@
 			else{
 				echo '<tr><td>No hay valores.</td></tr>';
 			}
-			echo '<button><a href="index.html">Home</a></button>
+			echo '<button><a href="../index.html">Home</a></button>
 			<br/><button><a href="insertar_categoria.php">INSERTAR CATEGORÍAS</a></button><br>';
 		}
 		?>

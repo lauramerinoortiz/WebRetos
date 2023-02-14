@@ -10,7 +10,7 @@
   <body>
 		<h1>Modificar categoría</h1>
 		<?php
-		require_once('controladores/controladorcategorias.php');
+		require_once('../controladores/controladorcategorias.php');
 		if(empty($_POST)){
 			$controlador=new ControladorCategorias();
 			$datos=$controlador->consultar();
@@ -21,7 +21,6 @@
 					}
 				}
 			}
-			
 			echo '<form method="POST" action="modificar.php">
 			<label>Categoría <label>
 			<input type="text" name="'.$_GET['id'].'" value="'.$categoria.'"/>

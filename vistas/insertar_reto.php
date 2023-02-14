@@ -5,7 +5,7 @@
 		<meta name="author" content="LAURA MERINO ORTIZ">
 		<meta name="description" content="Esta es la descripción de mi web.">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-		<link rel="stylesheet" href="styles.css" type="text/css">
+		<link rel="stylesheet" href="../styles.css" type="text/css">
 	</head>
 	<body>
 		<div id="formReto">
@@ -33,7 +33,7 @@
 			<label for="categoria" id="labelCategoria">*Categoría:</label>
 			<select id="categoria" name="cat">
 				<?php 
-					require_once('controladores/controladorcategorias.php');
+					require_once('../controladores/controladorcategorias.php');
 					$controlador=new ControladorCategorias();
 					$datos=$controlador-> consultar();
 					if($datos->num_rows>0){
@@ -69,7 +69,7 @@
 				echo '<br>Añadir los datos con asterisco.';
 		}
 		else{
-			require_once('controladores/controladorretos.php');
+			require_once('../controladores/controladorretos.php');
 			$controladorRetos=new ControladorRetos();
 			$filas= $controladorRetos->insertar($_POST);
 			if($filas>0){

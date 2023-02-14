@@ -1,5 +1,5 @@
 <?php
-    require_once('modelos/modeloretos.php');
+    require_once('../modelos/modeloretos.php');
     /**
      * Clase para la gestión de objetos de tipo ControladorRetos
      */

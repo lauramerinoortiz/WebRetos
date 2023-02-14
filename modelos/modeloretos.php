@@ -1,5 +1,5 @@
 <?php
-require_once('config/conexion.php');
+require_once('../config/conexion.php');
 
 class ModeloRetos{
     function __construct(){
@@ -43,8 +43,8 @@ class ModeloRetos{
                 return 'duplicado';
             }
             else{
-                echo $error;
-                //return 'errordesconocido';
+                //echo $error;
+                return 'errordesconocido';
             }
         }
         $this->conexion->close();
@@ -70,7 +70,8 @@ class ModeloRetos{
      * Método que modifica un reto comprobando antes si ya existe un valor igual en la base de datos
      */
     public function modificarCategoria($reto){
-        
+        $this->conectar();
+        $this->conexion->close();
     }
 }
 ?>

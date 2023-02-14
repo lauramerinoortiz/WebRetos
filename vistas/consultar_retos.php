@@ -5,14 +5,14 @@
     <meta name="author" content="LAURA MERINO ORTIZ">
     <meta name="description" content="Esta es la descripción de mi web.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-	<link rel="stylesheet" href="styles.css" type="text/css">
+	<link rel="stylesheet" href="../styles.css" type="text/css">
   </head>
   <body>
 	<h1>Retos</h1>
 		<?php
 		if(isset($_GET['idReto'])){
 			$id=$_GET['idReto'];
-			require_once('controladores/controladorretos.php');
+			require_once('../controladores/controladorretos.php');
             $controladorRetos=new ControladorRetos();
             $datos=$controladorRetos->consultar();
 			while($linea = $datos ->fetch_assoc()){
@@ -24,7 +24,7 @@
 			require_once('eliminarReto.php');
 		}
 		else{
-			require_once('controladores/controladorretos.php');
+			require_once('../controladores/controladorretos.php');
             $controladorRetos=new ControladorRetos();
             $datos=$controladorRetos->consultar();
 			?>
@@ -42,7 +42,7 @@
 				</tr>
 			
 			<?php
-			require_once('controladores/controladorcategorias.php');
+			require_once('../controladores/controladorcategorias.php');
             $controladorCat=new ControladorCategorias();
 			if($datos->num_rows>0){
 				while($linea = $datos ->fetch_assoc()){
@@ -73,7 +73,7 @@
 			else{
 				echo '<tr><td>No hay valores.</td></tr>';
 			}
-			echo '<button><a href="index.html">Home</a></button>
+			echo '<button><a href="../index.html">Home</a></button>
 			<br/><button><a href="insertar_reto.php">INSERTAR NUEVO RETO</a></button>';
 		}
 		?>
