@@ -8,6 +8,17 @@
 		<link rel="stylesheet" href="../styles.css" type="text/css">
 	</head>
 	<body>
+		<?php
+			if(empty($_POST['nombre'])|| empty($_POST['inicio']) || empty($_POST['fin']) || empty($_POST['inicioIns']) || empty($_POST['finIns']) ){
+				echo '<br>Añadir los datos con asterisco.';
+			}
+			else{
+				require_once('../controladores/controladorretos.php');
+				$controladorRetos=new ControladorRetos();
+				$filas= $controladorRetos->modificar($_POST);
+							
+			}
+		?>
 		<div id="formReto">
 			<form action="modificarReto.php" method="post">
 			<?php 
@@ -25,9 +36,11 @@
 					$finIns=$linea['fecha_fin_inscripcion'];
 					$publicada=$linea['publicada'];
 					$categoria=$linea['idcategoria'];
+					$dirigido=$linea['dirigido'];
 				}
 			?>
 			<h1>Modificar reto</h1>
+			<input class="oculto" name="id" value="<?php echo $id; ?>">
 			<label for="nombre" id="labelNombre">*Nombre del reto:</label><input type="text" id="nombre" name="nombre" value="<?php echo $nombre;?>"><br>
 			<label for="descripcion" id="labelDesc">Descripción del reto:</label><textarea id="descripcion" name="descripcion"><?php echo $desc;?></textarea><br>
 			<label for="publiopciones" id="labelOpciones">*¿Publicar ya?</label>
@@ -48,13 +61,17 @@
 			<label for="dirigido" id="labelDirigido">*Dirigido a:</label>
 			<select id="dirigido" name="dirigido">
 				<?php 
-				
+				$clases=['Infantil','ESO', 'Bachillerato', 'GM', 'GS'];
+				foreach($clases as $clase){
+					if($clase==$dirigido){
+						echo '<option selected value="'.$clase.'">'.$clase.'</option>';
+					}
+					else{
+						echo '<option value="'.$clase.'">'.$clase.'</option>';
+					}
+				}
 				?>
-				<option value="infantil">INFANTIL</option>
-				<option value="eso">ESO</option>
-				<option value="bachillerato">BACHILLERATO</option>
-				<option value="gm">GM</option>
-				<option value="gs">GS</option>
+			
 			</select>
 
 			<label for="categoria" id="labelCategoria">*Categoría:</label>
@@ -65,7 +82,12 @@
 					$datos=$controlador-> consultar();
 					if($datos->num_rows>0){
 						while($linea = $datos ->fetch_assoc()){
-							echo '<option value="'.$linea['idcategoria'].'">'.$linea['nombre'].'</option>';
+							if($categoria==$linea['idcategoria']){
+								echo '<option selected value="'.$linea['idcategoria'].'">'.$linea['nombre'].'</option>';
+							}
+							else{
+								echo '<option value="'.$linea['idcategoria'].'">'.$linea['nombre'].'</option>';
+							}
 						}
 					}
 					else{
@@ -77,33 +99,19 @@
 
 			<div id="inscripcion">
 				<h3>Fecha inscripción</h3>
-				<label>*Fecha inicio:</label><input type="date" name="inicioIns" >
-				<label>*Fecha fin:</label><input type="date" name="finIns">
+				<label>*Fecha inicio:</label><input type="date" name="inicioIns" value="<?php echo $inicioIns?>">
+				<label>*Fecha fin:</label><input type="date" name="finIns" value="<?php echo $finIns?>">
 			</div><br>
 
 			<div id="realizacion">
 				<h3>Fecha realización</h3>
-				<label>*Fecha inicio:</label><input type="datetime-local" name="inicio">
-				<label>*Fecha fin:</label><input type="date" name="fin">
+				<label>*Fecha inicio:</label><input type="datetime-local" name="inicio" value="<?php echo $inicio?>">
+				<label>*Fecha fin:</label><input type="date" name="fin" value="<?php echo $fin?>">
 			</div><br>
 				<input type="submit" >
 				<input type="reset" name="restablecer" value="Restablecer">
 			</form>
-		</div>
-		<?php
-		if(empty($_POST['nombre'])|| empty($_POST['inicio']) || empty($_POST['fin']) || empty($_POST['inicioIns']) || empty($_POST['finIns']) ){
-			echo '<br>Añadir los datos con asterisco.';
-		}
-		else{
-			require_once('../controladores/controladorretos.php');
-			$controladorRetos=new ControladorRetos();
-			$filas= $controladorRetos->insertar($_POST);
-			if($filas>0){
-				echo'<br>Se han registrado '.$filas.' fila/s.';
-			}				
-		}
-		?>
-		
+		</div>		
 		<br/><button><a href="consultar_retos.php">CONSULTAR RETOS</a></button>
 	</body>
 </html>

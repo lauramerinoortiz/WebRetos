@@ -47,7 +47,7 @@
             $controladorCat=new ControladorCategorias();
 			if($datos->num_rows>0){
 				while($linea = $datos ->fetch_assoc()){
-					if($linea['publicada']==1){
+					if($linea['publicado']==1){
 						$publicado='Si';
 					}else{
 						$publicado='No';

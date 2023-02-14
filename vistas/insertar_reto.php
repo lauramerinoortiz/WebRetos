@@ -22,11 +22,11 @@
 
 			<label for="dirigido" id="labelDirigido">*Dirigido a:</label>
 			<select id="dirigido" name="dirigido">
-				<option value="infantil">INFANTIL</option>
-				<option value="eso">ESO</option>
-				<option value="bachillerato">BACHILLERATO</option>
-				<option value="gm">GM</option>
-				<option value="gs">GS</option>
+				<option value="Infantil">INFANTIL</option>
+				<option value="ESO">ESO</option>
+				<option value="Bachillerato">BACHILLERATO</option>
+				<option value="GM">GM</option>
+				<option value="GS">GS</option>
 			</select>
 
 			<label for="categoria" id="labelCategoria">*Categoría:</label>

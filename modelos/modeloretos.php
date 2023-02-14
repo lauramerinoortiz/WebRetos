@@ -46,7 +46,7 @@ class ModeloRetos{
             $desc="'$desc'";
         }
         $this->conectar();
-        $select= "INSERT INTO `retos` (`nombre`, `descripcion`, `fecha_inicio_reto`, `fecha_fin_reto`, `fecha_inicio_inscripcion`, `fecha_fin_inscripcion`,`publicada`, `idprofesor`, `idcategoria` ,`dirigido`) 
+        $select= "INSERT INTO `retos` (`nombre`, `descripcion`, `fecha_inicio_reto`, `fecha_fin_reto`, `fecha_inicio_inscripcion`, `fecha_fin_inscripcion`,`publicado`, `idprofesor`, `idcategoria` ,`dirigido`) 
         VALUES ('".$reto['nombre']."', ".$desc.", '".$reto['inicio']."', '".$reto['fin']."','".$reto['inicioIns']."','".$reto['finIns']."',".$reto['opciones'].", 1, ".$reto['cat'].", '".$reto['dirigido']."');";
         try{
             $datos = $this->conexion->query($select);
@@ -85,8 +85,9 @@ class ModeloRetos{
     /**
      * Método que modifica un reto comprobando antes si ya existe un valor igual en la base de datos
      */
-    public function modificarCategoria($reto){
+    public function modificarReto($reto){
         $this->conectar();
+        
         $this->conexion->close();
     }
 }
