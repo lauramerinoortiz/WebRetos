@@ -78,7 +78,7 @@ a{
 }
 
 button{
-	margin-top:30px;
+	margin:30px;
     background-color: transparent;
 }
 
@@ -131,4 +131,23 @@ button>a:hover{
 	border: 2px black solid;
 	display: inline-block;
 	margin-top: 20px;
+}
+
+input[type="submit" i], input[type="reset" i]  {
+	background-color: #280061;
+	color: #BEB5E8;
+	border-width:1px;
+	min-width: 100px;
+	font-size: 1.3em;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+input[type="submit" i]:hover, input[type="reset" i]:hover  {
+	background-color: #BEB5E8;
+	color: #280061;
+	border-width:1px;
+	min-width: 100px;
+	font-size: 1.3em;
+	cursor: pointer;
 }

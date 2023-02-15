@@ -28,10 +28,7 @@
          */
         public function insertar($reto){
             $filas=$this->modelo->insertarReto($reto);
-            if($filas>0){
-                return $filas;
-            }
-            else if($filas=='duplicado'){
+            if($filas=='duplicado'){
                 echo 'Valor existente';  //objetivo quitarlo
             }
             else if($filas=='errordesconocido'){
@@ -60,19 +57,23 @@
          *Método para el envío de retos recibidas al modelo para su posterior insercción
          */
         public function modificar($datos){
-            $resultado=$this->modelo->modificarReto($datos);
-            if($resultado=='ok'){
-                header('location: consultar_retos.php ');
-                exit;
-            }
-            else if($resultado=='duplicado'){
+            if($datos['nombre']=='' || $datos['inicio']='' || $datos['fin']==''||$datos['inicioIns']=='' || $datos['finIns']=''){
                 header('Location:' . getenv('HTTP_REFERER'));
             }
             else{
-                header('location: ../vistas/erroreliminar.html ');
-                exit;
+                $resultado=$this->modelo->modificarReto($datos);
+                if($resultado>0){
+                    header('location: consultar_retos.php ');
+                    exit;
+                }
+                else if($resultado=='duplicado'){
+                    header('Location:' . getenv('HTTP_REFERER'));
+                }
+                else{
+                    header('location: ../vistas/erroreliminar.html ');
+                    exit;
+                }
             }
-            
         }
     }
 ?>

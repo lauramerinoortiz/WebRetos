@@ -50,18 +50,16 @@ class ModeloRetos{
         VALUES ('".$reto['nombre']."', ".$desc.", '".$reto['inicio']."', '".$reto['fin']."','".$reto['inicioIns']."','".$reto['finIns']."',".$reto['opciones'].", 1, ".$reto['cat'].", '".$reto['dirigido']."');";
         try{
             $datos = $this->conexion->query($select);
-            return $datos;
+            return $this->conexion->affected_rows;
         }
         catch(Exception $e){
             $error=$this->conexion->errno;
-            echo $e;
-            // if($error==1062){
-            //     return 'duplicado';
-            // }
-            // else{
-            //     //echo $error;
-            //     return 'errordesconocido';
-            // }
+            if($error==1062){
+                return 'duplicado';
+            }
+            else{
+                return 'errordesconocido';
+            }
         }
         $this->conexion->close();
     }
@@ -87,7 +85,20 @@ class ModeloRetos{
      */
     public function modificarReto($reto){
         $this->conectar();
-        
+        try{
+            $upd= "UPDATE retos SET nombre='".$reto['nombre']."', descripcion='".$reto['descripcion']."', publicado=".$reto['opciones'].", dirigido='".$reto['dirigido']."', idcategoria=".$reto['cat'].", fecha_inicio_inscripcion='".$reto['inicioIns']."', fecha_fin_inscripcion='".$reto['finIns']."', fecha_inicio_reto='".$reto['inicio']."', fecha_fin_reto='".$reto['fin']."'  WHERE idreto=".$reto['id'].";";
+            $this->conexion->query($upd);
+            return $this->conexion->affected_rows;
+        }
+        catch(Exception $e){
+            $error=$this->conexion->errno;
+            if($error==1062){
+                return 'duplicado';
+            }
+            else{
+                return 'errordesconocido';
+            }
+        }
         $this->conexion->close();
     }
 }

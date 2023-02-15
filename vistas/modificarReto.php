@@ -8,15 +8,11 @@
 		<link rel="stylesheet" href="../styles.css" type="text/css">
 	</head>
 	<body>
-		<?php
-			if(empty($_POST['nombre'])|| empty($_POST['inicio']) || empty($_POST['fin']) || empty($_POST['inicioIns']) || empty($_POST['finIns']) ){
-				echo '<br>Añadir los datos con asterisco.';
-			}
-			else{
+		<?php 
+			if(isset($_POST['nombre'])){
 				require_once('../controladores/controladorretos.php');
 				$controladorRetos=new ControladorRetos();
-				$filas= $controladorRetos->modificar($_POST);
-							
+				$filas= $controladorRetos->modificar($_POST);	
 			}
 		?>
 		<div id="formReto">
@@ -27,14 +23,13 @@
 				$controlador=new ControladorRetos();
 				$datos=$controlador-> consultarId($id);
 				while($linea = $datos ->fetch_assoc()){
-					print_r($linea);
 					$nombre=$linea['nombre'];
 					$desc=$linea['descripcion'];
 					$inicio=$linea['fecha_inicio_reto'];
 					$fin=$linea['fecha_fin_reto'];
 					$inicioIns=$linea['fecha_inicio_inscripcion'];
 					$finIns=$linea['fecha_fin_inscripcion'];
-					$publicada=$linea['publicada'];
+					$publicada=$linea['publicado'];
 					$categoria=$linea['idcategoria'];
 					$dirigido=$linea['dirigido'];
 				}
@@ -111,7 +106,8 @@
 				<input type="submit" >
 				<input type="reset" name="restablecer" value="Restablecer">
 			</form>
-		</div>		
+		</div>
+		<p>*Recuerda rellenar los campos marcados con asterisco.</p>		
 		<br/><button><a href="consultar_retos.php">CONSULTAR RETOS</a></button>
 	</body>
 </html>
