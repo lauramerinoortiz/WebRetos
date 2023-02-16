@@ -31,7 +31,7 @@
 				}
 			}
 			else{
-				echo '<tr><td>No hay valores.</td></tr>';
+				echo '<tr><tdcolspan="2">No hay valores.</td></tr>';
 			}
 			echo '<button><a href="../index.html">Home</a></button>
 			<br/><button><a href="insertar_categoria.php">INSERTAR CATEGORÍAS</a></button><br>';

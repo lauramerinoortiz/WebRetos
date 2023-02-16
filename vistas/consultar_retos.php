@@ -93,7 +93,7 @@
 				}
 			}
 			else{
-				echo '<tr><td>No hay valores.</td></tr>';
+				echo '<tr><td colspan="10">No hay valores.</td></tr>';
 			}
 			echo '<button><a href="../index.html">Home</a></button>
 			<br/><button><a href="insertar_reto.php">INSERTAR NUEVO RETO</a></button>';
