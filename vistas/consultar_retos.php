@@ -9,6 +9,21 @@
   </head>
   <body>
 	<h1>Retos</h1>
+	<label>Filtrar:</label>
+	<form action="consultar_retos.php" method="GET">
+		<select name="filtro">
+			<option value="todos">Todos</option>
+			<?php 
+				require_once('../controladores/controladorcategorias.php');
+				$controladorCat=new ControladorCategorias();
+				$cat=$controladorCat->consultar();
+				while($cate = $cat ->fetch_assoc()){
+					echo '<option value='.$cate['idcategoria'].'>'.$cate['nombre'].'</option>';
+				}
+			?>
+		</select>
+		<input type="submit">
+	</form>
 		<?php
 		if(isset($_GET['idReto'])){
 			$id=$_GET['idReto'];
@@ -20,13 +35,18 @@
 					$nombre=$linea['nombre'];
 				}
 			}
-
 			require_once('eliminarReto.php');
 		}
 		else{
 			require_once('../controladores/controladorretos.php');
             $controladorRetos=new ControladorRetos();
-            $datos=$controladorRetos->consultar();
+			if(isset($_GET['filtro']) && $_GET['filtro']!='todos'){
+				$datos=$controladorRetos->consultarFiltro($_GET['filtro']);
+			}
+			else{
+				$datos=$controladorRetos->consultar();
+			}
+            
 			?>
 			<table id="retos">
 				<tr>

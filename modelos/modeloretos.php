@@ -25,7 +25,19 @@ class ModeloRetos{
         return $datos;
         $this->conexion->close();
     }
-
+    /**
+     * Método que consulta los retos según el filtro seleccionado
+     */
+    public function consultarRetosFiltro($cat){
+        $this->conectar();
+        $select= "SELECT * FROM retos WHERE idcategoria=".$cat.";";
+		$datos = $this->conexion->query($select);
+        return $datos;
+        $this->conexion->close();
+    }
+    /**
+     * Método que consulta el reto según su id
+     */
     public function consultarId($id){
         $this->conectar();
         $select= "SELECT * FROM retos WHERE idreto=".$id.";";

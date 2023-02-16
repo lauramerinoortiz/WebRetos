@@ -18,9 +18,19 @@
             $datos=$this->modelo->consultarRetos();
             return $datos;
         }
-
+        /**
+         * Método que busca un reto según su id
+         */
         public function consultarId($id){
             $datos=$this->modelo->consultarId($id);
+            return $datos;
+        }
+
+        /**
+         * Método que consulta los retos según el filtro
+         */
+        public function consultarFiltro($cat){
+            $datos=$this->modelo->consultarRetosFiltro($cat);
             return $datos;
         }
         /**
