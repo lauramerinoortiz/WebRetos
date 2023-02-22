@@ -7,10 +7,10 @@
         /**
          * Constructor para el instanciamiento de nuevos objetos de tipo ControladorCategorias
          */
-        function __construct()
-        {       
+        function __construct(){       
             $this->modelo=new ModeloCategorias();
         }
+
         /**
          *Método para la consulta de categorias y devuelve el resultado
          */
@@ -18,6 +18,15 @@
             $datos=$this->modelo->consultarCategorias();
             return $datos;
         }
+
+        /**
+         *Método para la consulta de categorias según su id y devuelve el resultado
+         */
+        public function consultarId($id){
+            $datos=$this->modelo->consultarId($id);
+            return $datos;
+        }
+
         /**
          *Método para el envío de categorias recibidas al modelo para su posterior insercción
          */

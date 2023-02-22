@@ -8,6 +8,23 @@
 		<link rel="stylesheet" href="../styles.css" type="text/css">
 	</head>
 	<body>
+		<nav>
+		<ul>
+			<a href="../index.html"><li>Home</li></a>
+			<li id="sub"><a href="consultar_retos.php">Retos</a>
+			<ul>
+				<a href="insertar_reto.php"><li class="primer">Nuevo Reto</li></a>
+				<a href="consultar_retos.php"><li>Listado</li></a>
+			</ul>
+			</li>
+			<li id="sub2"><a href="consultar_categoria.php">Categorías</a>
+			<ul>
+				<a href="insertar_categoria.php"><li class="primer">Nueva Categoría</li></a>
+				<a href="consultar_categoria.php"><li>Listado</li></a>
+			</ul></li>
+			<a href=""><li>Inscribir</li></a>
+		</ul>
+		</nav>
 		<?php 
 			if(isset($_POST['nombre'])){
 				require_once('../controladores/controladorretos.php');

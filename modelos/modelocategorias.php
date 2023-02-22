@@ -28,6 +28,17 @@ class ModeloCategorias{
     }
 
     /**
+     * Método que saca la categoría según un id
+     */
+    public function consultarId($id){
+        $this->conectar();
+        $select= "SELECT * FROM categorias WHERE idcategoria=".$id.";";
+		$datos = $this->conexion->query($select);
+        return $datos;
+        $this->conexion->close();
+    }
+
+    /**
      * Insertar categoria
      */
     public function insertarCategoria($nombre){

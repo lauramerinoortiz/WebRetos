@@ -8,8 +8,23 @@
 		<link rel="stylesheet" href="../styles.css" type="text/css">
 	</head>
 	<body>
-		<br><button><a href="../index.html">Home</a></button>
-		<button><a href="consultar_retos.php">CONSULTAR RETOS</a></button><br>
+		<nav>
+		<ul>
+			<a href="../index.html"><li>Home</li></a>
+			<li id="sub"><a href="consultar_retos.php">Retos</a>
+			<ul>
+				<a href="insertar_reto.php"><li class="primer">Nuevo Reto</li></a>
+				<a href="consultar_retos.php"><li>Listado</li></a>
+			</ul>
+			</li>
+			<li id="sub2"><a href="consultar_categoria.php">Categorías</a>
+			<ul>
+				<a href="insertar_categoria.php"><li class="primer">Nueva Categoría</li></a>
+				<a href="consultar_categoria.php"><li>Listado</li></a>
+			</ul></li>
+			<a href=""><li>Inscribir</li></a>
+		</ul>
+		</nav>
 		<div id="formReto">
 			<form action="insertar_reto.php" method="post">
 				

@@ -22,6 +22,7 @@ nav{
 	height: 70px;
 	background-color: #BEB5E8;
 	text-align: center;
+	position: relative;
 }
 
 nav ul{
@@ -40,7 +41,7 @@ li{
 
 nav ul li{
 	cursor: pointer;
-    width: 300px;
+    width: 200px;
 	padding-top: 20px;
 	background-color: #BEB5E8;
 	height: 50px;
@@ -104,8 +105,7 @@ div#form >form> input#nombre{
 
 table{
 	width:450px;
-	margin:auto;
-	margin-top: 50px;
+	margin: 50px auto;
 	border-collapse: collapse;
 	border-color: #280061;
 	color: #280061;
@@ -165,6 +165,10 @@ button>a:hover{
 	min-width: 1300px;
 }
 
+#retos >tbody> tr >td > a{
+	font-size: 1.1em;
+}
+
 #retos td{
 	padding: 15px 0px;
 }
@@ -207,4 +211,22 @@ input[type="submit" i]:hover, input[type="reset" i]:hover  {
 	min-width: 100px;
 	font-size: 1.3em;
 	cursor: pointer;
+}
+
+#datos{
+	min-width: 700px;
+}
+
+#datos th{
+	border:1px #BEB5E8 solid;
+}
+
+#datos>tbody>tr> th> a{
+	color: #BEB5E8;
+	font-size: 1em;
+}
+
+#datos>tbody >tr > th:hover > a{
+	color: #280061;
+	background-color: #BEB5E8;
 }
