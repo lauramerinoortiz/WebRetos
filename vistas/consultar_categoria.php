@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="../styles.css" type="text/css">
   </head>
   <body>
+  	<br><button><a href="../index.html">Home</a></button><br>
 	<h1>CATEGORÍAS</h1>
 		<?php
 		if(isset($_GET['nombre'])){
@@ -33,8 +34,7 @@
 			else{
 				echo '<tr><tdcolspan="2">No hay valores.</td></tr>';
 			}
-			echo '<button><a href="../index.html">Home</a></button>
-			<br/><button><a href="insertar_categoria.php">INSERTAR CATEGORÍAS</a></button><br>';
+			echo '<br/><button><a href="insertar_categoria.php">INSERTAR CATEGORÍAS</a></button><br>';
 		}
 		?>
 	</table>

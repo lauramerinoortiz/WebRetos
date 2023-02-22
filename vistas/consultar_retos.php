@@ -8,8 +8,9 @@
 	<link rel="stylesheet" href="../styles.css" type="text/css">
   </head>
   <body>
+  	<button><a href="../index.html">Home</a></button><br>
 	<h1>Retos</h1>
-	<label>Filtrar:</label>
+	<br><label>Filtrar:</label><br>
 	<form action="consultar_retos.php" method="GET">
 		<select name="filtro">
 			<option value="todos">Todos</option>
@@ -18,7 +19,11 @@
 				$controladorCat=new ControladorCategorias();
 				$cat=$controladorCat->consultar();
 				while($cate = $cat ->fetch_assoc()){
-					echo '<option value='.$cate['idcategoria'].'>'.$cate['nombre'].'</option>';
+					if(isset($_GET['filtro']) && $_GET['filtro']==$cate['idcategoria']){
+						echo '<option value='.$cate['idcategoria'].' selected>'.$cate['nombre'].'</option>';
+					}else{
+						echo '<option value='.$cate['idcategoria'].'>'.$cate['nombre'].'</option>';
+					}
 				}
 			?>
 		</select>
@@ -95,8 +100,7 @@
 			else{
 				echo '<tr><td colspan="10">No hay valores.</td></tr>';
 			}
-			echo '<button><a href="../index.html">Home</a></button>
-			<br/><button><a href="insertar_reto.php">INSERTAR NUEVO RETO</a></button>';
+			echo '<br/><button><a href="insertar_reto.php">INSERTAR NUEVO RETO</a></button>';
 		}
 		?>
 	</table>

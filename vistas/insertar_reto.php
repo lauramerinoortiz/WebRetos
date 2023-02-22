@@ -8,6 +8,8 @@
 		<link rel="stylesheet" href="../styles.css" type="text/css">
 	</head>
 	<body>
+		<br><button><a href="../index.html">Home</a></button>
+		<button><a href="consultar_retos.php">CONSULTAR RETOS</a></button><br>
 		<div id="formReto">
 			<form action="insertar_reto.php" method="post">
 				
@@ -58,25 +60,26 @@
 				<label>*Fecha inicio:</label><input type="datetime-local" name="inicio">
 				<label>*Fecha fin:</label><input type="date" name="fin">
 			</div><br>
-
-				<input type="submit" >
-				<input type="reset" name="restablecer" value="Restablecer">
+			<?php
+				if(empty($_POST['nombre'])|| empty($_POST['inicio']) || empty($_POST['fin']) || empty($_POST['inicioIns']) || empty($_POST['finIns']) ){
+						echo '<br>Añadir los datos con asterisco.<br>';
+				}
+				else{
+					require_once('../controladores/controladorretos.php');
+					$controladorRetos=new ControladorRetos();
+					$filas= $controladorRetos->insertar($_POST);
+					if($filas>0){
+						echo'<br>Se han registrado '.$filas.' fila/s.<br>';
+					}
+					else{
+						echo'<br>Error en las fechas. Compruebe que las fechas de inicio son anteriores a las de fin.<br>';
+					}				
+				}
+			?>
+			<input type="submit" >
+			<input type="reset" name="restablecer" value="Restablecer">
 			</form>
 		</div>
-		<?php
-		if(empty($_POST['nombre'])|| empty($_POST['inicio']) || empty($_POST['fin']) || empty($_POST['inicioIns']) || empty($_POST['finIns']) ){
-				echo '<br>Añadir los datos con asterisco.';
-		}
-		else{
-			require_once('../controladores/controladorretos.php');
-			$controladorRetos=new ControladorRetos();
-			$filas= $controladorRetos->insertar($_POST);
-			if($filas>0){
-				echo'<br>Se han registrado '.$filas.' fila/s.';
-			}				
-		}
-		?>
 		
-		<br/><button><a href="consultar_retos.php">CONSULTAR RETOS</a></button>
 	</body>
 </html>

@@ -7,10 +7,10 @@
         /**
          * Constructor para el instanciamiento de nuevos objetos de tipo ControladorRetos
          */
-        function __construct()
-        {       
+        function __construct(){       
             $this->modelo=new ModeloRetos();
         }
+        
         /**
          *Método para la consulta de retos y devuelve el resultado
          */
@@ -18,6 +18,7 @@
             $datos=$this->modelo->consultarRetos();
             return $datos;
         }
+
         /**
          * Método que busca un reto según su id
          */
@@ -33,19 +34,23 @@
             $datos=$this->modelo->consultarRetosFiltro($cat);
             return $datos;
         }
+
         /**
          *Método para el envío de retos recibidas al modelo para su posterior insercción
          */
         public function insertar($reto){
-            $filas=$this->modelo->insertarReto($reto);
-            if($filas=='duplicado'){
-                echo 'Valor existente';  //objetivo quitarlo
-            }
-            else if($filas=='errordesconocido'){
-                header('../vistas/erroreliminar.html');
+            if($reto['inicio']>$reto['fin'] || $reto['inicioIns']>$reto['finIns'] || $reto['inicioIns']>$reto['inicio']){
+                //Deberia controlarse desde servidor pero como la tabla no controla esos errores, se controla desde cliente
+                return 0;
             }
             else{
-                return $filas;
+                $filas=$this->modelo->insertarReto($reto);
+                if($filas=='errordesconocido'){
+                    header('../vistas/erroreliminar.html');
+                }
+                else{
+                    return $filas;
+                }
             }
         }
 

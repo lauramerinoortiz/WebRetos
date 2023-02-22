@@ -8,6 +8,8 @@
 		<link rel="stylesheet" href="../styles.css" type="text/css">
 	</head>
 	<body>
+		<br><button><a href="../index.html">Home</a></button>
+		<button><a href="consultar_categoria.php">CONSULTAR CATEGORÍAS</a></button>
 		<div id="form">
 			<form action="insertar_categoria.php" method="post">
 				<label for="nombre">Nueva categoría</label><br>
@@ -31,7 +33,5 @@
 				}				
 			}
 		?>
-		
-		<br/><button><a href="consultar_categoria.php">CONSULTAR CATEGORÍAS</a></button>
 	</body>
 </html>
