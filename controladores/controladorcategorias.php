@@ -32,10 +32,10 @@
          */
         public function insertar($categoria){
             $filas=$this->modelo->insertarCategoria($categoria);
-            if($filas=='duplicado'){
-                echo 'Valor existente';     //objetivo quitarlo
+            if($filas==0){
+                return 0;
             }
-            else if($filas=='errordesconocido'){
+            else if($filas==-1){
                 header('../vistas/erroreliminar.html');
             }
             else{

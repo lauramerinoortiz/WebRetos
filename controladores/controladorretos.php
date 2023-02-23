@@ -24,7 +24,12 @@
          */
         public function consultarId($id){
             $datos=$this->modelo->consultarId($id);
-            return $datos;
+            if($datos==NULL){
+                return NULL;
+            }
+            else{
+                return $datos;
+            }
         }
 
         /**
@@ -72,12 +77,12 @@
          *Método para el envío de retos recibidas al modelo para su posterior insercción
          */
         public function modificar($datos){
-            if($datos['nombre']=='' || $datos['inicio']='' || $datos['fin']==''||$datos['inicioIns']=='' || $datos['finIns']=''){
+            if($datos['nombre']=='' || $datos['inicio']=='' || $datos['fin']==''||$datos['inicioIns']=='' || $datos['finIns']==''){
                 header('Location:' . getenv('HTTP_REFERER'));
             }
             else{
                 $resultado=$this->modelo->modificarReto($datos);
-                if($resultado>0){
+                if($resultado>=0){
                     header('location: consultar_retos.php ');
                     exit;
                 }

@@ -30,6 +30,9 @@
 				$filas= $controladorCategorias->insertar($nombre);
 				if($filas>0){
 					echo'<br>Se han registrado '.$filas.' fila/s.';
+				}
+				else if($filas==0){
+					echo 'Ya existe una categoría con ese nombre. Vuelva a intentarlo.';
 				}				
 			}
 		?>

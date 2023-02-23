@@ -48,20 +48,20 @@
                     <td><?php echo $reto['descripcion'] ;?></td>
                 </tr>
                 <tr>
-                    <th>Inicio Reto</th>
-                    <td><?php echo $reto['fecha_inicio_reto'] ;?></td>
-                </tr>
-                <tr>
-                    <th>Fin Reto</th>
-                    <td><?php echo $reto['fecha_fin_reto'] ;?></td>
-                </tr>
-                <tr>
                     <th>Inicio Inscripción</th>
                     <td><?php echo $reto['fecha_inicio_inscripcion'] ;?></td>
                 </tr>
                 <tr>
                     <th>Fin Inscripción</th>
                     <td><?php echo $reto['fecha_fin_inscripcion'] ;?></td>
+                </tr>
+                <tr>
+                    <th>Inicio Reto</th>
+                    <td><?php echo $reto['fecha_inicio_reto'] ;?></td>
+                </tr>
+                <tr>
+                    <th>Fin Reto</th>
+                    <td><?php echo $reto['fecha_fin_reto'] ;?></td>
                 </tr>
                 <tr>
                     <th>Dirigido a</th>

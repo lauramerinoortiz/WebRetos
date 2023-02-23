@@ -104,11 +104,13 @@ class ModeloRetos{
         }
         catch(Exception $e){
             $error=$this->conexion->errno;
+            echo $e;
             if($error==1062){
                 return 'duplicado';
             }
             else{
-                return 'errordesconocido';
+                echo $e;
+                return -1;
             }
         }
         $this->conexion->close();

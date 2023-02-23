@@ -51,10 +51,10 @@ class ModeloCategorias{
         catch(Exception $e){
             $error=$this->conexion->errno;
             if($error==1062){
-                return 'duplicado';
+                return 0;
             }
             else{
-                return 'errordesconocido';
+                return -1;
             }
         }
         $this->conexion->close();

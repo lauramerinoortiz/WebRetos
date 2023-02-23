@@ -67,7 +67,7 @@
 						}
 					?>
 				</select>
-				<input type="submit">
+				<input type="submit" value="Buscar">
 			</form>
 			<table id="retos">
 				<tr>
@@ -89,26 +89,29 @@
 						$publicado='No';
 					}
 
-					$cat=$controladorCat->consultar();
+					$cat=$controladorCat->consultarId($linea['idcategoria']);
 					echo '<tr>
 					<td colspan="1"><a href="datos_reto.php?id='.$linea['idreto'].'">'.$linea['nombre'].'</a></td>
 					<td colspan="1">'.$linea['descripcion'].'</td>
 					<td colspan="1">'.$publicado.'</td>';
-					while($cate = $cat ->fetch_assoc()){
-						if($cate['idcategoria']==$linea['idcategoria']){
-							echo '<td colspan="1">'.$cate['nombre'].'</td>';
-						}					
+					$cate = $cat ->fetch_assoc();
+					if($cate==NULL){
+						echo '<td colspan="1">Vacio</td>';
 					}
+					else{
+						echo '<td colspan="1">'.$cate['nombre'].'</td>';
+					}					
+					
 					echo '<td><a href="modificarReto.php?idReto='.$linea['idreto'].'">✎</a>
 					<a href="consultar_retos.php?idReto='.$linea['idreto'].'">🗑</a></td></tr>';
 				}
 			}
 			else{
-				echo '<tr><td colspan="10">No hay valores.</td></tr>';
+				echo '<tr><td colspan="10">No hay retos.</td></tr>';
 			}
-			echo '<br/><button><a href="insertar_reto.php">INSERTAR NUEVO RETO</a></button>';
 		}
 		?>
 	</table>
+	<br/><button><a href="insertar_reto.php">INSERTAR NUEVO RETO</a></button>
   </body>
 </html>
