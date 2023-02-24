@@ -45,13 +45,13 @@
          */
         public function insertar($reto){
             if($reto['inicio']>$reto['fin'] || $reto['inicioIns']>$reto['finIns'] || $reto['inicioIns']>$reto['inicio']){
-                //Deberia controlarse desde servidor pero como la tabla no controla esos errores, se controla desde cliente
                 return 0;
             }
             else{
                 $filas=$this->modelo->insertarReto($reto);
                 if($filas=='errordesconocido'){
-                    header('../vistas/erroreliminar.html');
+                    header('Location: erroreliminar.html');
+                    exit;
                 }
                 else{
                     return $filas;
@@ -65,11 +65,12 @@
         public function eliminar($reto){
             $resultado=$this->modelo->eliminarReto($reto);
             if($resultado>0){
-                header('location: consultar_retos.php ');
+                header('Location: consultar_retos.php ');
                 exit;
             }
             else{
-                header('../vistas/erroreliminar.html');
+                header('Location: erroreliminar.html');
+                exit;
             } 
         }
 
@@ -79,18 +80,20 @@
         public function modificar($datos){
             if($datos['nombre']=='' || $datos['inicio']=='' || $datos['fin']==''||$datos['inicioIns']=='' || $datos['finIns']==''){
                 header('Location:' . getenv('HTTP_REFERER'));
+                exit;
             }
             else{
                 $resultado=$this->modelo->modificarReto($datos);
                 if($resultado>=0){
-                    header('location: consultar_retos.php ');
+                    header('Location: consultar_retos.php');
                     exit;
                 }
                 else if($resultado=='duplicado'){
                     header('Location:' . getenv('HTTP_REFERER'));
+                    exit;
                 }
                 else{
-                    header('location: ../vistas/erroreliminar.html ');
+                    header('Location: erroreliminar.html ');
                     exit;
                 }
             }

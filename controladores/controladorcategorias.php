@@ -36,7 +36,7 @@
                 return 0;
             }
             else if($filas==-1){
-                header('../vistas/erroreliminar.html');
+                header('Location: erroreliminar.html');
             }
             else{
                 return $filas;
@@ -53,7 +53,7 @@
                 exit;
             }
             else{
-                header('../vistas/erroreliminar.html');
+                header('Location: erroreliminar.html');
             } 
         }
 

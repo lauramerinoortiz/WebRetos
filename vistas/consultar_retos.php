@@ -73,7 +73,7 @@
 				<tr>
 					<th colspan="1">Nombre</th>
 					<th colspan="1">Descripción</th>
-					<th colspan="1">Up</th>
+					<th colspan="1">Publicado</th>
 					<th colspan="1">Categoría</th>
 					<th colspan="1">Opciones</th>
 				</tr>
@@ -109,9 +109,8 @@
 			else{
 				echo '<tr><td colspan="10">No hay retos.</td></tr>';
 			}
+			echo '</table><br/><button><a href="insertar_reto.php">INSERTAR NUEVO RETO</a></button>';
 		}
 		?>
-	</table>
-	<br/><button><a href="insertar_reto.php">INSERTAR NUEVO RETO</a></button>
   </body>
 </html>

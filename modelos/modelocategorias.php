@@ -11,8 +11,7 @@ class ModeloCategorias{
     /**
      * Iniciar conexión con la base de datos.
      */
-    private function conectar()
-    {     
+    private function conectar(){     
         $this->conexion = new mysqli($this->servidor,  $this->usuario,  $this->contrasenia, $this->bd);
     }
 
