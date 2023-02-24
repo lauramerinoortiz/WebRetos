@@ -65,7 +65,7 @@
         public function eliminar($reto){
             $resultado=$this->modelo->eliminarReto($reto);
             if($resultado>0){
-                header('Location: consultar_retos.php ');
+                header('Location: consultar_retos.php');
                 exit;
             }
             else{
@@ -82,10 +82,13 @@
                 header('Location:' . getenv('HTTP_REFERER'));
                 exit;
             }
+            else if($reto['inicio']>$reto['fin'] || $reto['inicioIns']>$reto['finIns'] || $reto['inicioIns']>$reto['inicio']){
+                return 0;
+            }
             else{
                 $resultado=$this->modelo->modificarReto($datos);
                 if($resultado>=0){
-                    header('Location: consultar_retos.php');
+                    header('location: consultar_retos.php');
                     exit;
                 }
                 else if($resultado=='duplicado'){
@@ -93,7 +96,7 @@
                     exit;
                 }
                 else{
-                    header('Location: erroreliminar.html ');
+                    header('Location: erroreliminar.html');
                     exit;
                 }
             }

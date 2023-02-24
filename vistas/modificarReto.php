@@ -30,6 +30,9 @@
 				require_once('../controladores/controladorretos.php');
 				$controladorRetos=new ControladorRetos();
 				$filas= $controladorRetos->modificar($_POST);	
+				if($filas==0){
+					echo'<br>Error en las fechas. Compruebe que las fechas de inicio son anteriores a las de fin.<br>';
+				}
 			}
 		?>
 		<div id="formReto">
