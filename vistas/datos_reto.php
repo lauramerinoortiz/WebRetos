@@ -90,7 +90,7 @@
                 </tr>
             </tbody>
         </table>
-        <button><a href="modificarReto.php?idReto=<?php echo $reto['idreto']?>">Modificar</a></button>
+        <button><a href="modificar_reto.php?idReto=<?php echo $reto['idreto']?>">Modificar</a></button>
 	    <button><a href="consultar_retos.php?idReto=<?php echo $reto['idreto']?>">Borrar</a></button>
     </body>
 </html>

@@ -36,7 +36,7 @@
 					$nombre=$linea['nombre'];
 				}
 			}
-			require_once('eliminarReto.php');
+			require_once('eliminar_reto.php');
 		}
 		else{
 			require_once('../controladores/controladorretos.php');
@@ -102,7 +102,7 @@
 						echo '<td colspan="1">'.$cate['nombre'].'</td>';
 					}					
 					
-					echo '<td><a href="modificarReto.php?idReto='.$linea['idreto'].'">✎</a>
+					echo '<td><a href="modificar_reto.php?idReto='.$linea['idreto'].'">✎</a>
 					<a href="consultar_retos.php?idReto='.$linea['idreto'].'">🗑</a></td></tr>';
 				}
 			}

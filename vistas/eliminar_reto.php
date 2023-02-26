@@ -16,7 +16,7 @@
         }
         else{
           echo '<h1>¿Seguro que quieres eliminar '.$nombre.'?</h1>
-          <button class="modificar"><a href="eliminarReto.php?id='.$id.'">Sí</button>
+          <button class="modificar"><a href="eliminar_reto.php?id='.$id.'">Sí</button>
           <button class="eliminar"><a href="consultar_retos.php">No</button>';
         }
     ?>

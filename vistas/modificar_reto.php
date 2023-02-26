@@ -36,7 +36,7 @@
 			}
 		?>
 		<div id="formReto">
-			<form action="modificarReto.php" method="post">
+			<form action="modificar_reto.php" method="post">
 			<?php 
 				$id=$_GET['idReto'];
 				require_once('../controladores/controladorretos.php');
