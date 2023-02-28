@@ -10,7 +10,7 @@
   <body>
   	<nav>
       <ul>
-		<a href="../index.html"><li>Home</li></a>
+	  	<a href="../index.html"><li id="logo"></li></a>
         <li id="sub"><a href="consultar_retos.php">Retos</a>
           <ul>
             <a href="insertar_reto.php"><li class="primer">Nuevo Reto</li></a>

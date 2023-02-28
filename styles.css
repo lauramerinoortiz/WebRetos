@@ -6,12 +6,22 @@
 	margin: 0;
 }
 body{
-	background-color: #e5e0ff;
+	background-color: #BFD9E3;
 	text-align: center;
 	font-family: sans-serif;
 	margin:0px;
-	color: #280061;
+	color: #0C1640;
 } 
+
+#logo{
+	background-image: url('https://media.istockphoto.com/id/1341681278/vector/two-hands-the-concept-of-protecting-anything-vector-illustration-interconnection.jpg?s=612x612&w=0&k=20&c=QZmkMdTLOVyzaPi-SgvHy0KNa8cC47wl0b3mfPyxsM0=');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:contain;
+}
+#logo:hover{
+	background-color: white;
+}
 
 h1{
 	margin-top:50px;
@@ -20,7 +30,7 @@ h1{
 nav{
 	width: 100%;
 	height: 70px;
-	background-color: #BEB5E8;
+	background-color: white;
 	text-align: center;
 	position: relative;
 }
@@ -43,7 +53,7 @@ nav ul li{
 	cursor: pointer;
     width: 200px;
 	padding-top: 20px;
-	background-color: #BEB5E8;
+	background-color: white;
 	height: 50px;
 }
 
@@ -58,11 +68,11 @@ nav ul li{
 }
 
 li:hover{
-	background-color: #280061;
-	color: #e5e0ff ;
+	background-color: #2988AD;
+	color: white ;
 }
 li:hover > a{
-	color: #e5e0ff ;
+	color: white ;
 }
 
 #titulo{
@@ -80,46 +90,46 @@ div#form{
 div#form >form> label{
 	font-size:2.5em;
 	font-style: bold;
-	color: #280061;
+	color: #0C1640;
 }
 
 div#form >form> input{
 	margin-top:40px;
 	margin-bottom:20px;
 	color: white;
-    background-color: #280061;
+    background-color: #2988AD;
 	font-size:1.3em;
 }
 
 div#form >form> input:hover{
-	background-color: #BEB5E8;
-	color: #280061;
+	background-color: white;
+	color: #2988AD;
 	transition: all .5s;
 }
 
 div#form >form> input#nombre{
 	margin-top:40px;
-	background-color: #dbd5ff;
-    color: #280061;
+	background-color: white;
+    color: #2988AD;
 }
 
 table{
 	width:450px;
 	margin: 50px auto;
 	border-collapse: collapse;
-	border-color: #280061;
-	color: #280061;
+	border-color: #2988AD;
+	color: #0C1640;
 	font-size:1.5em;
 }
 
 th{
-	background-color: #280061;
-	color: #e5e0ff;
+	background-color: #2988AD;
+	color: white;
 	padding:15px;
 }
 
 tr{
-	border: 1px solid #280061;
+	border: 1px solid #2988AD;
 }
 
 tr a{
@@ -129,7 +139,7 @@ tr a{
 
 a{
 	text-decoration:none;
-	color:#280061;
+	color:#0C1640;
 	font-size:1.5em;
 	width: 100%;
 }
@@ -140,7 +150,7 @@ button{
 }
 
 button:hover{
-    background-color: #280061;
+    background-color: #2988AD;
 	transition: all .5s;
 }
 
@@ -189,14 +199,14 @@ button>a:hover{
 
 #inscripcion, #realizacion{
 	padding: 10px;
-	border: 2px black solid;
+	border: 2px #0C1640 solid;
 	display: inline-block;
 	margin-top: 20px;
 }
 
 input[type="submit" i], input[type="reset" i]  {
-	background-color: #280061;
-	color: #BEB5E8;
+	background-color: #2988AD;
+	color: white;
 	border-width:1px;
 	min-width: 100px;
 	font-size: 1.3em;
@@ -205,8 +215,8 @@ input[type="submit" i], input[type="reset" i]  {
 }
 
 input[type="submit" i]:hover, input[type="reset" i]:hover  {
-	background-color: #BEB5E8;
-	color: #280061;
+	background-color: white;
+	color: #2988AD;
 	border-width:1px;
 	min-width: 100px;
 	font-size: 1.3em;
@@ -218,15 +228,15 @@ input[type="submit" i]:hover, input[type="reset" i]:hover  {
 }
 
 #datos th{
-	border:1px #BEB5E8 solid;
+	border:1px white solid;
 }
 
 #datos>tbody>tr> th> a{
-	color: #BEB5E8;
+	color: white;
 	font-size: 1em;
 }
 
 #datos>tbody >tr > th:hover > a{
-	color: #280061;
-	background-color: #BEB5E8;
+	color: #2988AD;
+	background-color: white;
 }
