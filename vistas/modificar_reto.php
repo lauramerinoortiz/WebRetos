@@ -1,3 +1,14 @@
+<?php 
+	if(isset($_POST['nombre'])){
+		require_once('../controladores/controladorretos.php');
+		$controladorRetos=new ControladorRetos();
+		$filas= $controladorRetos->modificar($_POST);	
+		if($filas==0){
+			$_GET['idReto']=$_POST['id'];
+			echo'<br>Error en las fechas. Compruebe que las fechas de inicio son anteriores a las de fin.<br>';
+		}
+	}
+?>
 <!DOCTYPE html>
 	<head>
 		<meta charset="utf-8">
@@ -25,16 +36,6 @@
 			<a href=""><li>Inscribir</li></a>
 		</ul>
 		</nav>
-		<?php 
-			if(isset($_POST['nombre'])){
-				require_once('../controladores/controladorretos.php');
-				$controladorRetos=new ControladorRetos();
-				$filas= $controladorRetos->modificar($_POST);	
-				if($filas==0){
-					echo'<br>Error en las fechas. Compruebe que las fechas de inicio son anteriores a las de fin.<br>';
-				}
-			}
-		?>
 		<div id="formReto">
 			<form action="modificar_reto.php" method="post">
 			<?php 

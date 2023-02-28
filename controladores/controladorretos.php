@@ -79,20 +79,20 @@
          */
         public function modificar($datos){
             if($datos['nombre']=='' || $datos['inicio']=='' || $datos['fin']==''||$datos['inicioIns']=='' || $datos['finIns']==''){
-                header('Location:' . getenv('HTTP_REFERER'));
+                header('Location:'.$_SERVER['HTTP_REFERER']);
                 exit;
             }
-            else if($reto['inicio']>$reto['fin'] || $reto['inicioIns']>$reto['finIns'] || $reto['inicioIns']>$reto['inicio']){
+            else if($datos['inicio']>$datos['fin'] || $datos['inicioIns']>$datos['finIns'] || $datos['inicioIns']>$datos['inicio']){
                 return 0;
             }
             else{
                 $resultado=$this->modelo->modificarReto($datos);
                 if($resultado>=0){
-                    header('location: consultar_retos.php');
+                    header('Location: consultar_retos.php');
                     exit;
                 }
                 else if($resultado=='duplicado'){
-                    header('Location:' . getenv('HTTP_REFERER'));
+                    header('Location:'.$_SERVER['HTTP_REFERER']);
                     exit;
                 }
                 else{

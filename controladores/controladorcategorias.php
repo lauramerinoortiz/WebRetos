@@ -54,6 +54,7 @@
             }
             else{
                 header('Location: erroreliminar.html');
+                exit;
             } 
         }
 
@@ -62,16 +63,18 @@
          */
         public function modificar($datos){
             if(reset($datos)==''){
-                header('Location:' . getenv('HTTP_REFERER'));
+                header('Location:'.$_SERVER['HTTP_REFERER']);
+                exit;
             }else{
                 $resultado=$this->modelo->modificarCategoria($datos);
             
-                if($resultado=='ok'){
+                if($resultado>0){
                     header('location: consultar_categoria.php ');
                     exit;
                 }
-                else if($resultado=='duplicado'){
-                    header('Location:' . getenv('HTTP_REFERER'));
+                else if($resultado==0){
+                    header('Location:'.$_SERVER['HTTP_REFERER']);
+                    exit;
                 }
                 else{
                      header('location: ../vistas/erroreliminar.html ');

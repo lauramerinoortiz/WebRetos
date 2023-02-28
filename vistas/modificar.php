@@ -1,3 +1,10 @@
+<?php 
+	if(!empty($_POST)){
+		require_once('../controladores/controladorcategorias.php');
+		$controlador=new ControladorCategorias();
+		$controlador->modificar($_POST);
+	}
+?>
 <!DOCTYPE html>
   <head>
     <meta charset="utf-8">
@@ -27,12 +34,7 @@
 			<input type="submit" value="Guardar"/><br>
 			</form>
 			<p>Si el valor ya existe, se le volverá a pedir el dato.</p>';
-		
 		}		
-		else{
-			$controlador=new ControladorCategorias();
-			$controlador->modificar($_POST);
-		}
 		?>
 	</div>
   </body>

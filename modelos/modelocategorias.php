@@ -82,20 +82,16 @@ class ModeloCategorias{
                     try{
                         $resultado = $this->conexion->query($upd);
                         if($resultado>0){
-                            return 'ok';
-                        }
-                        else{
-                            return 'errormodificar';
-                            
+                            return 1;
                         }
                     }
                     catch(Exception $e){
                         $error=$this->conexion->errno;
                         if($error==1062){
-                            return 'duplicado';
+                            return 0;
                         }
                         else{
-                            return 'errordesconocido';
+                            return -1;
                         }
                     }
             }
