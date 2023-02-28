@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="../styles.css" type="text/css">
   </head>
   <body>
-  	<br><button><a href="../index.html">Home</a></button><br>
+  	<br><button><a href="../index.php">Home</a></button><br>
 	<h1>CATEGORÍAS</h1>
 		<?php
 		if(isset($_GET['nombre'])){

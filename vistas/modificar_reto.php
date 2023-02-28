@@ -1,4 +1,9 @@
 <?php 
+	//comprobamos la sesion
+	if(!isset($_COOKIE['id'])) {
+		header('Location: ../index.php');
+	}
+	
 	if(isset($_POST['nombre'])){
 		require_once('../controladores/controladorretos.php');
 		$controladorRetos=new ControladorRetos();
@@ -21,7 +26,7 @@
 	<body>
 		<nav>
 		<ul>
-			<a href="../index.html"><li id="logo"></li></a>
+			<a href="../index.php"><li id="logo"></li></a>
 			<li id="sub"><a href="consultar_retos.php">Retos</a>
 			<ul>
 				<a href="insertar_reto.php"><li class="primer">Nuevo Reto</li></a>

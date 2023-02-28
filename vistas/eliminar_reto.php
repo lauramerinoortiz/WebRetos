@@ -1,4 +1,9 @@
 <?php 
+  //Comprobamos la sesion
+    if(!isset($_COOKIE['id'])) {
+          header('Location: ../index.php');
+      }
+  
     if(isset($_GET['id'])){
         require_once('../controladores/controladorretos.php');
         $controladorRetos=new ControladorRetos();

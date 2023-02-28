@@ -7,12 +7,17 @@ class ModeloRetos{
         $this->usuario = constant('USUARIO');
         $this->contrasenia = constant('CONTRASENIA');
         $this->bd = constant('BD');
+        if(isset($_COOKIE['id'])){
+            $this->idProfesor=$_COOKIE['id'];
+        }
+        
     }
     /**
      * Iniciar conexión con la base de datos.
      */
     private function conectar(){     
         $this->conexion = new mysqli($this->servidor,  $this->usuario,  $this->contrasenia, $this->bd);
+        $this->conexion->set_charset('utf8');
     }
 
     /**
@@ -20,7 +25,7 @@ class ModeloRetos{
      */
     public function consultarRetos(){
         $this->conectar();
-        $select= "SELECT * FROM retos;";
+        $select= "SELECT * FROM retos WHERE idprofesor=".$this->idProfesor.";";
 		$datos = $this->conexion->query($select);
         return $datos;
         $this->conexion->close();
@@ -30,7 +35,7 @@ class ModeloRetos{
      */
     public function consultarRetosFiltro($cat){
         $this->conectar();
-        $select= "SELECT * FROM retos WHERE idcategoria=".$cat.";";
+        $select= "SELECT * FROM retos WHERE idcategoria=".$cat." AND idprofesor=".$this->idProfesor.";";
 		$datos = $this->conexion->query($select);
         return $datos;
         $this->conexion->close();
@@ -59,7 +64,7 @@ class ModeloRetos{
         }
         $this->conectar();
         $select= "INSERT INTO `retos` (`nombre`, `descripcion`, `fecha_inicio_reto`, `fecha_fin_reto`, `fecha_inicio_inscripcion`, `fecha_fin_inscripcion`,`publicado`, `idprofesor`, `idcategoria` ,`dirigido`) 
-        VALUES ('".$reto['nombre']."', ".$desc.", '".$reto['inicio']."', '".$reto['fin']."','".$reto['inicioIns']."','".$reto['finIns']."',".$reto['opciones'].", 1, ".$reto['cat'].", '".$reto['dirigido']."');";
+        VALUES ('".$reto['nombre']."', ".$desc.", '".$reto['inicio']."', '".$reto['fin']."','".$reto['inicioIns']."','".$reto['finIns']."',".$reto['opciones'].", ".$this->idProfesor.", ".$reto['cat'].", '".$reto['dirigido']."');";
         try{
             $datos = $this->conexion->query($select);
             return $this->conexion->affected_rows;

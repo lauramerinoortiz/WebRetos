@@ -10,7 +10,7 @@
   <body>
     <nav>
       <ul>
-        <a href="./index.html"><li id="logo"></li></a>
+        <a href="./index.php"><li id="logo"></li></a>
         <li id="sub"><a href="vistas/consultar_retos.php">Retos</a>
           <ul>
             <a href="vistas/insertar_reto.php"><li class="primer">Nuevo Reto</li></a>
@@ -25,7 +25,13 @@
         <a><li>Inscribir</li></a>
       </ul>
     </nav>
-    <h1 id="titulo">Bienvenido a la web de Retos</h1>
-
+    <?php 
+      if(!isset($_COOKIE['id'])) {
+        require_once('vistas/inicio_sesion.php');
+      }
+      else{
+        echo '<h1 id="titulo">Bienvenido/a a la web de Retos</h1>';
+      }
+    ?>
   </body>
 </html>
