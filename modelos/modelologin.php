@@ -19,9 +19,9 @@ class ModeloLogin{
     /**
      * Sacar categorias
      */
-    public function login($correo){
+    public function login($correo, $contra){
         $this->conectar();
-        $select= "SELECT * FROM profesor WHERE correo='".$correo."';";
+        $select= "SELECT * FROM profesor WHERE correo='".$correo."' AND contrasena='".$contra."';";
 		$datos = $this->conexion->query($select);
         if(($datos->num_rows)>0){
             $linea = $datos ->fetch_assoc();

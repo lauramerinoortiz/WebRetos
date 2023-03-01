@@ -1,5 +1,6 @@
 <?php 
-	if(!isset($_COOKIE['id'])) {
+	session_start();
+	if(!isset($_SESSION['idprofesor'])) {
         header('Location: ../index.php');
     }
 ?>
@@ -28,6 +29,7 @@
             <a href="consultar_categoria.php"><li>Listado</li></a>
           </ul></li>
         <a href=""><li>Inscribir</li></a>
+		<a href="./cerrar_sesion.php"><li>Cerrar sesión</li></a>
       </ul>
     </nav>
 		<?php

@@ -14,10 +14,11 @@
         /**
          *Método para la consulta de categorias y devuelve el resultado
          */
-        public function login($correo){
-            $id=$this->modelo->login($correo);
+        public function login($correo,$contra){
+            $id=$this->modelo->login($correo,$contra);
             if($id>0){
-                setcookie ("id", $id, time()+120);
+                session_start();
+                $_SESSION['idprofesor']=$id;
                 header('Location: index.php');
             }
             else{

@@ -7,8 +7,8 @@ class ModeloRetos{
         $this->usuario = constant('USUARIO');
         $this->contrasenia = constant('CONTRASENIA');
         $this->bd = constant('BD');
-        if(isset($_COOKIE['id'])){
-            $this->idProfesor=$_COOKIE['id'];
+        if(isset($_SESSION['idprofesor'])){
+            $this->idProfesor=$_SESSION['idprofesor'];
         }
         
     }

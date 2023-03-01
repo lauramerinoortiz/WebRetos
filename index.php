@@ -1,3 +1,11 @@
+<?php 
+session_start();
+  if(!isset($_SESSION['idprofesor'])) {
+    require_once('vistas/inicio_sesion.php');
+  }
+  else{
+    
+?>
 <!DOCTYPE html>
   <head>
     <meta charset="utf-8">
@@ -23,15 +31,12 @@
             <a href="vistas/consultar_categoria.php"><li>Listado</li></a>
           </ul></li>
         <a><li>Inscribir</li></a>
+        <a href="vistas/cerrar_sesion.php"><li>Cerrar sesión</li></a>
       </ul>
     </nav>
-    <?php 
-      if(!isset($_COOKIE['id'])) {
-        require_once('vistas/inicio_sesion.php');
-      }
-      else{
-        echo '<h1 id="titulo">Bienvenido/a a la web de Retos</h1>';
-      }
-    ?>
+    <h1 id="titulo">Bienvenido/a a la web de Retos</h1>
   </body>
+  <?php 
+    }
+  ?>
 </html>

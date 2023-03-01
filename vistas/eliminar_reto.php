@@ -1,6 +1,7 @@
 <?php 
+
   //Comprobamos la sesion
-    if(!isset($_COOKIE['id'])) {
+    if(!isset($_SESSION['idprofesor'])) {
           header('Location: ../index.php');
       }
   

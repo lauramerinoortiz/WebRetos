@@ -1,9 +1,10 @@
 <?php
     if(isset($_POST['usuario'])){
         $usuario=$_POST['usuario'];
+        $contra=$_POST['contra'];
         require_once('controladores/controladorlogin.php');
         $controladorLogin=new ControladorLogin();
-		$controladorLogin->login($usuario);	
+		$controladorLogin->login($usuario,$contra);	
     }
 ?>
 <!DOCTYPE html>
@@ -20,6 +21,8 @@
         <form action="./" method="POST">
             <br><label for="usuario">Email: </label>
             <input id="usuario" type="text" name="usuario"><br>
+            <br><label for="contra">Contraseña: </label>
+            <input id="contra" type="password" name="contra"><br>
             <br><input type="submit">
         </form>
     </body>
