@@ -1,5 +1,5 @@
 <?php 
-session_start();
+  session_start();
   if(!isset($_SESSION['idprofesor'])) {
     require_once('vistas/inicio_sesion.php');
   }
@@ -30,7 +30,7 @@ session_start();
             <a href="vistas/insertar_categoria.php"><li class="primer">Nueva Categoría</li></a>
             <a href="vistas/consultar_categoria.php"><li>Listado</li></a>
           </ul></li>
-        <a><li>Inscribir</li></a>
+        <a href="vistas/pdf.php"><li>PDF</li></a>
         <a href="vistas/cerrar_sesion.php"><li>Cerrar sesión</li></a>
       </ul>
     </nav>

@@ -21,8 +21,12 @@ class ModeloLogin{
      */
     public function login($correo, $contra){
         $this->conectar();
-        $select= "SELECT * FROM profesor WHERE correo='".$correo."' AND contrasena='".$contra."';";
-		$datos = $this->conexion->query($select);
+        $select= "SELECT * FROM profesor WHERE correo=? AND contrasena=?;";
+        $peticion = $this->conexion->prepare($select);
+        $peticion->bind_param("ss",$correo, $contra);
+        $peticion->execute();
+        $datos=$peticion->get_result();
+        
         if(($datos->num_rows)>0){
             $linea = $datos ->fetch_assoc();
             return $linea['idprofesor'];
