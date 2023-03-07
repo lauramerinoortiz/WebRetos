@@ -8,6 +8,7 @@ class ModeloCategorias{
         $this->contrasenia = constant('CONTRASENIA');
         $this->bd = constant('BD');
     }
+    
     /**
      * Iniciar conexión con la base de datos.
      */

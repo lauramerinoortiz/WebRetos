@@ -21,20 +21,19 @@ class ModeloLogin{
      */
     public function login($correo, $contra){
         $this->conectar();
-        $select= "SELECT * FROM profesor WHERE correo=? AND contrasena=?;";
+        $select= "SELECT * FROM profesor WHERE correo=?";
         $peticion = $this->conexion->prepare($select);
-        $peticion->bind_param("ss",$correo, $contra);
+        $peticion->bind_param("s",$correo);
         $peticion->execute();
         $datos=$peticion->get_result();
-        
-        if(($datos->num_rows)>0){
-            $linea = $datos ->fetch_assoc();
+
+        $linea=$datos->fetch_assoc();
+        if(password_verify($contra, $linea['contrasena'])){
             return $linea['idprofesor'];
         }
         else{
             return 0;
         }
-        return $datos;
         $this->conexion->close();
     }
 }
