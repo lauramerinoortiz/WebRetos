@@ -47,7 +47,7 @@
          *Método para el envío de retos recibidas al modelo para su posterior insercción
          */
         public function insertar($reto){
-            if($reto['inicio']>$reto['fin'] || $reto['inicioIns']>$reto['finIns'] || $reto['inicioIns']>$reto['inicio']){
+            if($reto['inicio']>$reto['fin'] || $reto['inicioIns']>$reto['finIns'] || $reto['inicioIns']>$reto['inicio'] || $datos['inicio']<$datos['finIns']){
                 return 0;
             }
             else{
@@ -85,7 +85,7 @@
                 header('Location:'.$_SERVER['HTTP_REFERER']);
                 exit;
             }
-            else if($datos['inicio']>$datos['fin'] || $datos['inicioIns']>$datos['finIns'] || $datos['inicioIns']>$datos['inicio']){
+            else if($datos['inicio']>$datos['fin'] || $datos['inicioIns']>$datos['finIns'] || $datos['inicioIns']>$datos['inicio'] || $datos['inicio']<$datos['finIns']){
                 return 0;
             }
             else{
