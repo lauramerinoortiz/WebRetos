@@ -59,8 +59,8 @@
 					require_once('../controladores/controladorcategorias.php');
 					$controlador=new ControladorCategorias();
 					$datos=$controlador-> consultar();
-					if($datos->num_rows>0){
-						while($linea = $datos ->fetch_assoc()){
+					if(count($datos)>0){
+						foreach($datos as $linea){
 							echo '<option value="'.$linea['idcategoria'].'">'.$linea['nombre'].'</option>';
 						}
 					}
@@ -101,6 +101,7 @@
 			<input type="submit" >
 			<input type="reset" name="restablecer" value="Restablecer">
 			</form>
+			<br/><button><a href="consultar_retos.php">CONSULTAR RETOS</a></button>
 		</div>
 		
 	</body>

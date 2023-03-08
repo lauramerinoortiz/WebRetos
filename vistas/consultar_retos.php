@@ -38,7 +38,7 @@
 			require_once('../controladores/controladorretos.php');
             $controladorRetos=new ControladorRetos();
             $datos=$controladorRetos->consultar();
-			while($linea = $datos ->fetch_assoc()){
+			foreach($datos as $linea){
 				if($linea['idreto']==$id){
 					$nombre=$linea['nombre'];
 				}
@@ -65,7 +65,7 @@
 						require_once('../controladores/controladorcategorias.php');
 						$controladorCat=new ControladorCategorias();
 						$cat=$controladorCat->consultar();
-						while($cate = $cat ->fetch_assoc()){
+						foreach($cat as $cate){
 							if(isset($_GET['filtro']) && $_GET['filtro']==$cate['idcategoria']){
 								echo '<option value='.$cate['idcategoria'].' selected>'.$cate['nombre'].'</option>';
 							}else{
@@ -88,8 +88,9 @@
 			<?php
 			require_once('../controladores/controladorcategorias.php');
             $controladorCat=new ControladorCategorias();
-			if($datos->num_rows>0){
-				while($linea = $datos ->fetch_assoc()){
+			if(count($datos)>0){
+				
+				foreach($datos as $linea){
 					if($linea['publicado']==1){
 						$publicado='Si';
 					}else{
@@ -97,18 +98,18 @@
 					}
 
 					$cat=$controladorCat->consultarId($linea['idcategoria']);
+					
 					echo '<tr>
 					<td colspan="1"><a href="datos_reto.php?id='.$linea['idreto'].'">'.$linea['nombre'].'</a></td>
 					<td colspan="1">'.$linea['descripcion'].'</td>
 					<td colspan="1">'.$publicado.'</td>';
-					$cate = $cat ->fetch_assoc();
-					if($cate==NULL){
+					
+					if($cat==NULL){
 						echo '<td colspan="1">Vacio</td>';
 					}
 					else{
-						echo '<td colspan="1">'.$cate['nombre'].'</td>';
+						echo '<td colspan="1">'.$cat[0]['nombre'].'</td>';
 					}					
-					
 					echo '<td><a href="modificar_reto.php?idReto='.$linea['idreto'].'">✎</a>
 					<a href="consultar_retos.php?idReto='.$linea['idreto'].'">🗑</a></td></tr>';
 				}

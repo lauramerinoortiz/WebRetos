@@ -1,5 +1,5 @@
 <?php
-require_once('../config/conexion.php');
+require_once('../config/configdb.php');
 
 class ModeloRetos{
     function __construct(){
@@ -71,12 +71,7 @@ class ModeloRetos{
         }
         catch(Exception $e){
             $error=$this->conexion->errno;
-            if($error==1062){
-                return 'duplicado';
-            }
-            else{
-                return 'errordesconocido';
-            }
+            return 'errordesconocido';
         }
         $this->conexion->close();
     }
@@ -101,20 +96,22 @@ class ModeloRetos{
      * Método que modifica un reto comprobando antes si ya existe un valor igual en la base de datos
      */
     public function modificarReto($reto){
+        $desc=$reto['descripcion'];
+        if(empty($desc)){
+            $desc='NULL';
+        }
+        else{
+            $desc="'$desc'";
+        }
         $this->conectar();
         try{
-            $upd= "UPDATE retos SET nombre='".$reto['nombre']."', descripcion='".$reto['descripcion']."', publicado=".$reto['opciones'].", dirigido='".$reto['dirigido']."', idcategoria=".$reto['cat'].", fecha_inicio_inscripcion='".$reto['inicioIns']."', fecha_fin_inscripcion='".$reto['finIns']."', fecha_inicio_reto='".$reto['inicio']."', fecha_fin_reto='".$reto['fin']."'  WHERE idreto=".$reto['id'].";";
+            $upd= "UPDATE retos SET nombre='".$reto['nombre']."', descripcion=".$desc.", publicado=".$reto['opciones'].", dirigido='".$reto['dirigido']."', idcategoria=".$reto['cat'].", fecha_inicio_inscripcion='".$reto['inicioIns']."', fecha_fin_inscripcion='".$reto['finIns']."', fecha_inicio_reto='".$reto['inicio']."', fecha_fin_reto='".$reto['fin']."'  WHERE idreto=".$reto['id'].";";
             $this->conexion->query($upd);
             return $this->conexion->affected_rows;
         }
         catch(Exception $e){
             $error=$this->conexion->errno;
-            if($error==1062){
-                return 'duplicado';
-            }
-            else{
-                return -1;
-            }
+            return -1;
         }
         $this->conexion->close();
     }

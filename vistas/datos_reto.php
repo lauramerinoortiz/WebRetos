@@ -38,7 +38,7 @@
                 require_once('../controladores/controladorretos.php');
                 $controladorRetos=new ControladorRetos();
                 $datos=$controladorRetos->consultarId($_GET['id']);
-                $reto=$datos->fetch_assoc();
+                $reto=$datos[0];
             }
             else{
                 echo 'Ha habido algún error. Inténtelo con otro reto.';
@@ -91,12 +91,13 @@
                     require_once('../controladores/controladorcategorias.php');
                     $controladorCat=new ControladorCategorias();
                     $cat=$controladorCat->consultarId($reto['idcategoria']);
-                    $fila=$cat->fetch_assoc();
+                    $fila=$cat[0];
                     echo $fila['nombre'];
                     ?></td>
                 </tr>
             </tbody>
         </table>
+        <button><a href="consultar_retos.php">Volver</a></button>
         <button><a href="modificar_reto.php?idReto=<?php echo $reto['idreto']?>">Modificar</a></button>
 	    <button><a href="consultar_retos.php?idReto=<?php echo $reto['idreto']?>">Borrar</a></button>
     </body>

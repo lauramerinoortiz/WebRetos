@@ -16,6 +16,7 @@
          */
         public function consultar(){
             $datos=$this->modelo->consultarCategorias();
+            $datos=$datos->fetch_all( $resulttype = MYSQLI_ASSOC);
             return $datos;
         }
 
@@ -24,6 +25,7 @@
          */
         public function consultarId($id){
             $datos=$this->modelo->consultarId($id);
+            $datos=$datos->fetch_all($resulttype = MYSQLI_ASSOC);
             return $datos;
         }
 

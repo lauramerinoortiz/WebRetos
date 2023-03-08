@@ -50,7 +50,7 @@
 				require_once('../controladores/controladorretos.php');
 				$controlador=new ControladorRetos();
 				$datos=$controlador-> consultarId($id);
-				while($linea = $datos ->fetch_assoc()){
+				foreach($datos as $linea){
 					$nombre=$linea['nombre'];
 					$desc=$linea['descripcion'];
 					$inicio=$linea['fecha_inicio_reto'];
@@ -103,8 +103,8 @@
 					require_once('../controladores/controladorcategorias.php');
 					$controlador=new ControladorCategorias();
 					$datos=$controlador-> consultar();
-					if($datos->num_rows>0){
-						while($linea = $datos ->fetch_assoc()){
+					if(count($datos)>0){
+						foreach($datos as $linea){
 							if($categoria==$linea['idcategoria']){
 								echo '<option selected value="'.$linea['idcategoria'].'">'.$linea['nombre'].'</option>';
 							}

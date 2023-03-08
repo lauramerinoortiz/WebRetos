@@ -1,5 +1,5 @@
 <?php
-require_once('config/conexion.php');
+require_once('config/configdb.php');
 
 class ModeloLogin{
     function __construct(){

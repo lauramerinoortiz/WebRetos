@@ -22,7 +22,7 @@
 			$controlador=new ControladorCategorias();
 			$datos=$controlador->consultar();
 			if(isset($_GET['id'])){
-				while($linea = $datos ->fetch_assoc()){
+				foreach($datos as $linea){
 					if($linea['idcategoria']==$_GET['id']){
 						$categoria=$linea['nombre'];
 					}

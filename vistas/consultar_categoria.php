@@ -22,13 +22,13 @@
             $controladorCategorias=new ControladorCategorias();
             $datos=$controladorCategorias->consultar();
 			echo '<table><tr><th colspan="2">Datos introducidos</th><th colspan="1">Opciones</th></tr>';
-			if($datos->num_rows>0){
-				while($linea = $datos ->fetch_assoc()){
-						echo '<tr>
-						<td colspan="2">'.$linea['nombre'].'</td>
-						<td><a href="modificar.php?id='.$linea['idcategoria'].'">✎</a>
-							<a href="consultar_categoria.php?nombre='.$linea['nombre'].'&id='.$linea['idcategoria'].'">🗑</a></td>
-						</tr>';	
+			if(count($datos)>0){
+				foreach($datos as $linea){
+				 	echo '<tr>
+				 	<td colspan="2">'.$linea['nombre'].'</td>
+				 	<td><a href="modificar.php?id='.$linea['idcategoria'].'">✎</a>
+				 	<a href="consultar_categoria.php?nombre='.$linea['nombre'].'&id='.$linea['idcategoria'].'">🗑</a></td>
+				 	</tr>';
 				}
 			}
 			else{

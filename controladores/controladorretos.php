@@ -16,6 +16,7 @@
          */
         public function consultar(){
             $datos=$this->modelo->consultarRetos();
+            $datos=$datos->fetch_all( $resulttype = MYSQLI_ASSOC);
             return $datos;
         }
 
@@ -28,6 +29,7 @@
                 return NULL;
             }
             else{
+                $datos=$datos->fetch_all( $resulttype = MYSQLI_ASSOC);
                 return $datos;
             }
         }
@@ -37,6 +39,7 @@
          */
         public function consultarFiltro($cat){
             $datos=$this->modelo->consultarRetosFiltro($cat);
+            $datos=$datos->fetch_all( $resulttype = MYSQLI_ASSOC);
             return $datos;
         }
 
