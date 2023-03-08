@@ -3,6 +3,11 @@
   if(!isset($_SESSION['idprofesor'])) {
     require_once('vistas/inicio_sesion.php');
   }
+  else if(isset($_GET['cerrar'])) {
+    require_once('controladores/controladorlogin.php');
+    $controladorLogin=new ControladorLogin();
+		$controladorLogin->logout();
+  }
   else{
     
 ?>
@@ -31,7 +36,7 @@
             <a href="vistas/consultar_categoria.php"><li>Listado</li></a>
           </ul></li>
         <a href="vistas/pdf.php"><li>PDF</li></a>
-        <a href="vistas/cerrar_sesion.php"><li>Cerrar sesión</li></a>
+        <a href="./?cerrar=1"><li>Cerrar sesión</li></a>
       </ul>
     </nav>
     <h1 id="titulo">Bienvenido/a a la web de Retos</h1>

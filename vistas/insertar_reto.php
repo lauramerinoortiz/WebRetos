@@ -29,7 +29,7 @@
 				<a href="consultar_categoria.php"><li>Listado</li></a>
 			</ul></li>
 			<a href=""><li>Inscribir</li></a>
-			<a href="./cerrar_sesion.php"><li>Cerrar sesión</li></a>
+			<a href="../index.php?cerrar=1"><li>Cerrar sesión</li></a>
 		</ul>
 		</nav>
 		<div id="formReto">
