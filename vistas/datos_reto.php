@@ -91,8 +91,13 @@
                     require_once('../controladores/controladorcategorias.php');
                     $controladorCat=new ControladorCategorias();
                     $cat=$controladorCat->consultarId($reto['idcategoria']);
-                    $fila=$cat[0];
-                    echo $fila['nombre'];
+                    if($cat!=null){
+                        $fila=$cat[0];
+                        echo $fila['nombre'];
+                    }
+                    else{
+                        echo 'Vacío';
+                    }
                     ?></td>
                 </tr>
             </tbody>
